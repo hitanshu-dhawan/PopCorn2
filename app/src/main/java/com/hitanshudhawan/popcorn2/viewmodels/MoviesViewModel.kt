@@ -48,7 +48,7 @@ class MoviesViewModel : ViewModel() {
                 _topRatedMovies.value = topRatedMovies.await().results
             }
 
-            // hitanshu : how to deal with error
+            // hitanshu : deal with error
         }
     }
 
