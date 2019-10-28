@@ -21,6 +21,8 @@ class MoviesViewModel : ViewModel() {
             popularMovies.await()
             upcomingMovies.await()
             topRatedMovies.await()
+
+            // hitanshu : how to deal with error?
         }
     }
 
