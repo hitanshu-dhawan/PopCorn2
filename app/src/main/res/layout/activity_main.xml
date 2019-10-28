@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <fragment
         android:id="@+id/movies_fragment"
-        android:name="com.hitanshudhawan.popcorn2.MoviesFragment"
+        android:name="com.hitanshudhawan.popcorn2.ui.MoviesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

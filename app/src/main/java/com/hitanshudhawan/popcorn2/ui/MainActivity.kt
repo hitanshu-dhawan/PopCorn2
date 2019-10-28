@@ -1,7 +1,8 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hitanshudhawan.popcorn2.R
 
 class MainActivity : AppCompatActivity() {
 
