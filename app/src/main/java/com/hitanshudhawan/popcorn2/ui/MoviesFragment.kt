@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hitanshudhawan.popcorn2.adapters.MoviesLargeAdapter
 import com.hitanshudhawan.popcorn2.adapters.MoviesSmallAdapter
-import com.hitanshudhawan.popcorn2.viewmodels.MoviesViewModel
 import com.hitanshudhawan.popcorn2.databinding.FragmentMoviesBinding
+import com.hitanshudhawan.popcorn2.viewmodels.MoviesViewModel
 
 class MoviesFragment : Fragment() {
 
@@ -22,7 +22,10 @@ class MoviesFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentMoviesBinding.inflate(inflater).also { it.vm = moviesViewModel }
+        binding = FragmentMoviesBinding.inflate(inflater).also {
+            it.vm = moviesViewModel
+            it.lifecycleOwner = this
+        }
         return binding.root
     }
 
