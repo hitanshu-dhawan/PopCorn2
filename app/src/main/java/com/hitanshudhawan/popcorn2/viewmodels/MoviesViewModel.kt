@@ -28,21 +28,4 @@ class MoviesViewModel : ViewModel() {
         emit(ApiClient.client.create(MoviesService::class.java).getTopRatedMovies().results)
     }
 
-//    fun fetchMovies() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val nowShowingMovies = async { ApiClient.client.create(MoviesService::class.java).getNowShowingMovies() }
-//            val popularMovies = async { ApiClient.client.create(MoviesService::class.java).getPopularMovies() }
-//            val upcomingMovies = async { ApiClient.client.create(MoviesService::class.java).getUpcomingMovies() }
-//            val topRatedMovies = async { ApiClient.client.create(MoviesService::class.java).getTopRatedMovies() }
-//
-//            withContext(Dispatchers.Main) {
-//                _nowShowingMovies.value = nowShowingMovies.await().results
-//                _popularMovies.value = popularMovies.await().results
-//                _upcomingMovies.value = upcomingMovies.await().results
-//                _topRatedMovies.value = topRatedMovies.await().results
-//            }
-//
-//        }
-//    }
-
 }

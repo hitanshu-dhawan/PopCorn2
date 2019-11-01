@@ -32,8 +32,6 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        moviesViewModel.fetchMovies()
-
         moviesViewModel.nowShowingMovies.observe(this, Observer {
             binding.recyclerViewNowShowing.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             binding.recyclerViewNowShowing.adapter = MoviesLargeAdapter(context!!, it)
