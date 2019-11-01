@@ -32,6 +32,8 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // hitanshu : try to find a better solution for RecyclerView + Data Binding
+
         moviesViewModel.nowShowingMovies.observe(this, Observer {
             binding.recyclerViewNowShowing.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             binding.recyclerViewNowShowing.adapter = MoviesLargeAdapter(context!!, it)

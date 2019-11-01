@@ -8,6 +8,8 @@ import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesViewModel : ViewModel() {
 
+    // hitanshu : handle API errors
+
     val nowShowingText = MutableLiveData<String>().apply { value = "Now Showing" }
     val nowShowingMovies = liveData {
         emit(ApiClient.client.create(MoviesService::class.java).getNowShowingMovies().results)

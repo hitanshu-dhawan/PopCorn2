@@ -12,3 +12,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+// hitanshu : dependency injection
+// hitanshu : testing
+// hitanshu : gradle in kotlin

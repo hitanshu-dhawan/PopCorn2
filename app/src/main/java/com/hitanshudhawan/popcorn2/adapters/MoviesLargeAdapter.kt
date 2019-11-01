@@ -8,6 +8,8 @@ import com.hitanshudhawan.popcorn2.viewmodels.MovieCardViewModel
 import com.hitanshudhawan.popcorn2.databinding.ItemMovieLargeCardBinding
 import com.hitanshudhawan.popcorn2.network.models.Movie
 
+// hitanshu : Android Data Binding: RecyclerView
+// https://medium.com/androiddevelopers/android-data-binding-recyclerview-db7c40d9f0e4
 class MoviesLargeAdapter(private val context: Context, private val movies: List<Movie>) : RecyclerView.Adapter<MoviesLargeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
