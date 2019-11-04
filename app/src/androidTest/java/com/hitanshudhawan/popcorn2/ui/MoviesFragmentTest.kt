@@ -10,6 +10,8 @@ import com.hitanshudhawan.popcorn2.R
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
+// link : https://developer.android.com/training/basics/fragments/testing
 @RunWith(AndroidJUnit4::class)
 class MoviesFragmentTest {
 
