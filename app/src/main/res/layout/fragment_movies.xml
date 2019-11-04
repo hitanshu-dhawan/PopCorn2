@@ -21,6 +21,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/now_showing_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -41,6 +42,7 @@
                 android:nestedScrollingEnabled="false" />
 
             <TextView
+                android:id="@+id/popular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -61,6 +63,7 @@
                 android:nestedScrollingEnabled="false" />
 
             <TextView
+                android:id="@+id/upcoming_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -81,6 +84,7 @@
                 android:nestedScrollingEnabled="false" />
 
             <TextView
+                android:id="@+id/top_rated_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"

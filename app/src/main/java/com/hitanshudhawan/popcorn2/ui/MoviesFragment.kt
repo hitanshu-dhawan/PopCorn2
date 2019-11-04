@@ -6,20 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hitanshudhawan.popcorn2.adapters.MoviesLargeAdapter
 import com.hitanshudhawan.popcorn2.adapters.MoviesSmallAdapter
 import com.hitanshudhawan.popcorn2.databinding.FragmentMoviesBinding
 import com.hitanshudhawan.popcorn2.viewmodels.MoviesViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
 
-    private val moviesViewModel by lazy {
-        ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-    }
+    // link : https://insert-koin.io/docs/2.0/getting-started/android-viewmodel/
+    private val moviesViewModel: MoviesViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMoviesBinding.inflate(inflater).also {
