@@ -47,7 +47,4 @@ https://youtu.be/CGGLXNndI7M
 - https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471
 - https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0
 - https://www.youtube.com/watch?v=EOjq4OIWKqM
-
-
-
-
+- READ: https://developer.android.com/kotlin/coroutines
