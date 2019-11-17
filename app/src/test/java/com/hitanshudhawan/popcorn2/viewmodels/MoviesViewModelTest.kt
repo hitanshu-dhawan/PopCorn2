@@ -96,6 +96,7 @@ class MoviesViewModelTest : KoinTest {
         testMoviesViewModel.topRatedMovies.observe(testLifecycleOwner, Observer {})
         // testMoviesViewModel.topRatedMovies.observeForever {}
 
+        // hitanshu : look for a better way
         while (testMoviesViewModel.nowShowingMovies.value == null);
         while (testMoviesViewModel.popularMovies.value == null);
         while (testMoviesViewModel.upcomingMovies.value == null);
