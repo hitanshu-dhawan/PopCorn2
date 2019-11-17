@@ -44,10 +44,15 @@ https://youtu.be/CGGLXNndI7M
 - https://codelabs.developers.google.com/codelabs/kotlin-coroutines
 - https://developer.android.com/kotlin/coroutines
 - https://developer.android.com/topic/libraries/architecture/coroutines
-- https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471 (Deep Knowledge + Testing)
-- https://youtu.be/BOHK_w09pVA (Amazing Introduction Talk)
-- https://youtu.be/B8ppnjGPAGE (LiveData with Coroutines)
-- https://youtu.be/KMb0Fs8rCRs (Testing)
-- https://youtu.be/EOjq4OIWKqM (Deep Knowledge + Converting a callback API with coroutines)
+- Deep Knowledge + Testing
+- https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471
+- Amazing Introduction Talk
+- https://youtu.be/BOHK_w09pVA
+- LiveData with Coroutines
+- https://youtu.be/B8ppnjGPAGE
+- Testing
+- https://youtu.be/KMb0Fs8rCRs
+- Deep Knowledge + Converting a callback API with coroutines
+- https://youtu.be/EOjq4OIWKqM
 
 > A coroutine started on the main won't block the main thread while suspended.
