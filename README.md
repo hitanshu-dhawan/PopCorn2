@@ -48,3 +48,4 @@ https://youtu.be/CGGLXNndI7M
 - https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0
 - https://www.youtube.com/watch?v=EOjq4OIWKqM
 - READ: https://developer.android.com/kotlin/coroutines
+- https://kotlinlang.org/docs/tutorials/coroutines/coroutines-basic-jvm.html
