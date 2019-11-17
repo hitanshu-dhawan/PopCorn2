@@ -38,8 +38,6 @@ Gson Vs Moshi
 https://youtu.be/CGGLXNndI7M
 
 ### Kotlin Coroutines
-
-<br><br>
 - https://kotlinlang.org/docs/tutorials/coroutines/coroutines-basic-jvm.html
 - https://codelabs.developers.google.com/codelabs/kotlin-coroutines
 - https://developer.android.com/kotlin/coroutines
