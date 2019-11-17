@@ -38,15 +38,16 @@ Gson Vs Moshi
 https://youtu.be/CGGLXNndI7M
 
 ### Kotlin Coroutines
-// todo
+
 <br><br>
-- https://blog.mindorks.com/mastering-kotlin-coroutines-in-android-step-by-step-guide
-- https://developer.android.com/topic/libraries/architecture/coroutines
-- https://www.youtube.com/watch?v=jYuK1qzFrJg
-- https://www.youtube.com/watch?v=BOHK_w09pVA
-- https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471
-- https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0
-- https://www.youtube.com/watch?v=EOjq4OIWKqM
-- READ: https://developer.android.com/kotlin/coroutines
 - https://kotlinlang.org/docs/tutorials/coroutines/coroutines-basic-jvm.html
-- https://www.youtube.com/watch?v=B8ppnjGPAGE
+- https://codelabs.developers.google.com/codelabs/kotlin-coroutines
+- https://developer.android.com/kotlin/coroutines
+- https://developer.android.com/topic/libraries/architecture/coroutines
+- https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471 (Deep Knowledge + Testing)
+- https://youtu.be/BOHK_w09pVA (Amazing Introduction Talk)
+- https://youtu.be/B8ppnjGPAGE (LiveData with Coroutines)
+- https://youtu.be/KMb0Fs8rCRs (Testing)
+- https://youtu.be/EOjq4OIWKqM (Deep Knowledge + Converting a callback API with coroutines)
+
+> A coroutine started on the main won't block the main thread while suspended.
