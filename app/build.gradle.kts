@@ -13,7 +13,7 @@ android {
         targetSdkVersion(28)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.hitanshudhawan.popcorn2.MyTestRunner"
     }
     buildTypes {
         getByName("release") {
