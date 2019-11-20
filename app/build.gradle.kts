@@ -61,6 +61,7 @@ dependencies {
 
     debugImplementation("androidx.test:runner:1.2.0")
     debugImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    debugImplementation("androidx.test.espresso:espresso-contrib:3.2.0")
     debugImplementation("androidx.fragment:fragment-testing:1.1.0")
     debugImplementation("androidx.test.ext:junit:1.1.1")
 }

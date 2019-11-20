@@ -1,12 +1,12 @@
 package com.hitanshudhawan.popcorn2
 
-import java.io.File
+import androidx.test.InstrumentationRegistry
 
 object AT_Utils {
 
     fun getJson(path: String): String {
-        val uri = this.javaClass.classLoader!!.getResource(path)
-        val file = File(uri.path)
+        val context = InstrumentationRegistry.getContext()
+        val file = context.assets.open(path)
         return String(file.readBytes())
     }
 
