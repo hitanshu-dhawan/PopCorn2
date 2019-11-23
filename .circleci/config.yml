@@ -17,9 +17,15 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run:
+          name: Run Lint Checks
+          command: ./gradlew lintDebug
       - run:
           name: Run Tests
-          command: ./gradlew test
+          command: ./gradlew testDebug
+
+
       - store_artifacts:
           path: app/build/reports
           destination: reports
