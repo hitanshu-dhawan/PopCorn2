@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/movies_destination">
+
+    <fragment
+        android:id="@+id/movies_destination"
+        android:name="com.hitanshudhawan.popcorn2.MoviesFragment"
+        android:label="@string/movies"
+        tools:layout="@layout/fragment_movies" />
+
+    <fragment
+        android:id="@+id/tv_shows_destination"
+        android:name="com.hitanshudhawan.popcorn2.TVShowsFragment"
+        android:label="@string/tv_shows"
+        tools:layout="@layout/fragment_tv_shows" />
+
+    <fragment
+        android:id="@+id/favorites_destination"
+        android:name="com.hitanshudhawan.popcorn2.FavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

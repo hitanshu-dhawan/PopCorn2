@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">PopCorn2</string>
+
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="favorites">Favorites</string>
+
+<!--    <string name="now_showing">Now Showing</string>-->
+<!--    <string name="popular">Popular</string>-->
+<!--    <string name="upcoming">Upcoming</string>-->
+<!--    <string name="top_rated">Top Rated</string>-->
+<!--    <string name="airing_today">Airing Today</string>-->
+<!--    <string name="on_the_air">On The Air</string>-->
+<!--    <string name="view_all">View All</string>-->
+
+    <string name="now_showing_movies">Now Showing Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+
+    <string name="airing_today_tv_shows">Airing Today TV Shows</string>
+    <string name="on_the_air_tv_shows">On The Air TV Shows</string>
+    <string name="popular_tv_shows">Popular TV Shows</string>
+    <string name="top_rated_tv_shows">Top Rated TV Shows</string>
 </resources>
