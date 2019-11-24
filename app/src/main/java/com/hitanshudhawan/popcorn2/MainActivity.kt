@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // hitanshu : use view binding when it is stable
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.movies_destination, R.id.tv_shows_destination, R.id.favorites_destination), findViewById(R.id.drawer_layout))
         findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
