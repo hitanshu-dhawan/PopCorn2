@@ -74,10 +74,9 @@ https://youtu.be/CGGLXNndI7M
 > If it's not an Android class (Activity, Fragment ...), injection is made by constructor.
 
 ### Testing
-- // TODO
 - https://developer.android.com/training/basics/fragments/testing
 - https://github.com/square/okhttp/tree/master/mockwebserver
 - https://medium.com/@hanru.yeh/unit-test-retrofit-and-mockwebserver-a3e4e81fd2a2
--
-- https://www.reddit.com/r/androiddev/comments/9tux6h/how_to_unit_test_livedata_values_in_our_viewmodels/
-- https://medium.com/exploring-android/android-architecture-components-testing-your-viewmodel-livedata-70177af89c6e
+- Testing your ViewModel and LiveData
+  - https://www.reddit.com/r/androiddev/comments/9tux6h/how_to_unit_test_livedata_values_in_our_viewmodels/
+  - https://medium.com/exploring-android/android-architecture-components-testing-your-viewmodel-livedata-70177af89c6e
