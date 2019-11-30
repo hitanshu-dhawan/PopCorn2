@@ -1,5 +1,8 @@
 package com.hitanshudhawan.popcorn2
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class TVShowResponse(
     val backdrop_path: String?,
     val episode_run_time: List<Int>,
@@ -16,6 +19,7 @@ data class TVShowResponse(
     val vote_average: Double
 )
 
+@JsonClass(generateAdapter = true)
 data class Network(
     val name: String
 )

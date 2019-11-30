@@ -1,5 +1,8 @@
 package com.hitanshudhawan.popcorn2
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class MoviesResponse(
     val page: Int,
     val results: List<MovieBrief>,
@@ -7,6 +10,7 @@ data class MoviesResponse(
     val total_results: Int
 )
 
+@JsonClass(generateAdapter = true)
 data class MovieBrief(
     val poster_path: String?,
     val genre_ids: List<Int>,

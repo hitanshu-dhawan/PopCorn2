@@ -1,9 +1,13 @@
 package com.hitanshudhawan.popcorn2
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class CreditsResponse(
     val cast: List<Cast>
 )
 
+@JsonClass(generateAdapter = true)
 data class Cast(
     val character: String,
     val id: Int,

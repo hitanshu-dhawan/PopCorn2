@@ -1,7 +1,9 @@
 package com.hitanshudhawan.popcorn2
 
+import com.squareup.moshi.JsonClass
 import java.util.*
 
+@JsonClass(generateAdapter = true)
 data class MovieResponse(
     val backdrop_path: String?,
     val genres: List<Genre>,

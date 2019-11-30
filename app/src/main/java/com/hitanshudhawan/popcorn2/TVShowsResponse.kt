@@ -1,5 +1,8 @@
 package com.hitanshudhawan.popcorn2
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class TVShowsResponse(
     val page: Int,
     val results: List<TVShowBrief>,
@@ -7,6 +10,7 @@ data class TVShowsResponse(
     val total_pages: Int
 )
 
+@JsonClass(generateAdapter = true)
 data class TVShowBrief(
     val poster_path: String?,
     val id: Int,
