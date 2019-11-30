@@ -15,7 +15,6 @@ android {
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +34,9 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.1.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.1.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.6.2")
+    implementation("com.squareup.retrofit2:converter-moshi:2.6.2")
 
     testImplementation("junit:junit:4.12")
 }

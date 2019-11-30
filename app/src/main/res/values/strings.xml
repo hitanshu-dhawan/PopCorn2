@@ -5,7 +5,7 @@
     <string name="tv_shows">TV Shows</string>
     <string name="favorites">Favorites</string>
 
-<!--    <string name="now_showing">Now Showing</string>-->
+<!--    <string name="now_playing">Now Playing</string>-->
 <!--    <string name="popular">Popular</string>-->
 <!--    <string name="upcoming">Upcoming</string>-->
 <!--    <string name="top_rated">Top Rated</string>-->
@@ -13,7 +13,7 @@
 <!--    <string name="on_the_air">On The Air</string>-->
 <!--    <string name="view_all">View All</string>-->
 
-    <string name="now_showing_movies">Now Showing Movies</string>
+    <string name="now_playing_movies">Now Playing Movies</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="upcoming_movies">Upcoming Movies</string>
     <string name="top_rated_movies">Top Rated Movies</string>
