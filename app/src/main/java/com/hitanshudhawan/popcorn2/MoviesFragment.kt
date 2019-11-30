@@ -30,6 +30,11 @@ class MoviesFragment : Fragment() {
             val c = moviesService.getUpcomingMovies()
             val d = moviesService.getTopRatedMovies()
 
+            val e = moviesService.getMovieDetails(a.results[0].id)
+            val f = moviesService.getMovieVideos(a.results[0].id)
+            val g = moviesService.getMovieCredits(a.results[0].id)
+            val h = moviesService.getSimilarMovies(a.results[0].id)
+
             withContext(Dispatchers.Main) {
                 Toast.makeText(this@MoviesFragment.context, "${(a.results + b.results + c.results + d.results).size}", Toast.LENGTH_SHORT).show()
             }

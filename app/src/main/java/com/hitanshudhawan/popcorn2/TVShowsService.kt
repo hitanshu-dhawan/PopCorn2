@@ -19,15 +19,15 @@ interface TVShowsService {
     suspend fun getTopRatedTVShows(@Query("page") page: Int = 1): TVShowsResponse
 
     @GET("tv/{tv_id}")
-    suspend fun getTVShowDetails(@Path("id") tvShowId: Int): TVShowResponse
+    suspend fun getTVShowDetails(@Path("tv_id") tvShowId: Int): TVShowResponse
 
     @GET("tv/{tv_id}/videos")
-    suspend fun getTVShowVideos(@Path("id") tvShowId: Int): VideosResponse
+    suspend fun getTVShowVideos(@Path("tv_id") tvShowId: Int): VideosResponse
 
     @GET("tv/{tv_id}/credits")
-    suspend fun getTVShowCredits(@Path("id") tvShowId: Int): CreditsResponse
+    suspend fun getTVShowCredits(@Path("tv_id") tvShowId: Int): CreditsResponse
 
     @GET("tv/{tv_id}/similar")
-    suspend fun getSimilarTVShows(@Path("id") tvShowId: Int): TVShowsResponse
+    suspend fun getSimilarTVShows(@Path("tv_id") tvShowId: Int): TVShowsResponse
 
 }

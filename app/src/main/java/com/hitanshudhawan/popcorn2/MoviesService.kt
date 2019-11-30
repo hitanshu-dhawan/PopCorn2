@@ -19,15 +19,15 @@ interface MoviesService {
     suspend fun getTopRatedMovies(@Query("page") page: Int = 1): MoviesResponse
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("id") movieId: Int): MovieResponse
+    suspend fun getMovieDetails(@Path("movie_id") movieId: Int): MovieResponse
 
     @GET("movie/{movie_id}/videos")
-    suspend fun getMovieVideos(@Path("id") movieId: Int): VideosResponse
+    suspend fun getMovieVideos(@Path("movie_id") movieId: Int): VideosResponse
 
     @GET("movie/{movie_id}/credits")
-    suspend fun getMovieCredits(@Path("id") movieId: Int): CreditsResponse
+    suspend fun getMovieCredits(@Path("movie_id") movieId: Int): CreditsResponse
 
     @GET("movie/{movie_id}/similar")
-    suspend fun getSimilarMovies(@Path("id") movieId: Int): MoviesResponse
+    suspend fun getSimilarMovies(@Path("movie_id") movieId: Int): MoviesResponse
 
 }
