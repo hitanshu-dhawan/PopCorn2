@@ -12,5 +12,5 @@ data class MovieResponse(
     val runtime: Int?,
     val tagline: String?,
     val title: String,
-    val vote_average: Number
+    val vote_average: Double
 )

@@ -13,7 +13,7 @@ data class TVShowResponse(
     val overview: String,
     val poster_path: String?,
     val status: String,
-    val vote_average: Number
+    val vote_average: Double
 )
 
 data class Network(

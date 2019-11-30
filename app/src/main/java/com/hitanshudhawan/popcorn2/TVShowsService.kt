@@ -7,16 +7,16 @@ import retrofit2.http.Query
 interface TVShowsService {
 
     @GET("tv/airing_today")
-    suspend fun getAiringTodayTVShows(@Query("page") page: Int): TVShowsResponse
+    suspend fun getAiringTodayTVShows(@Query("page") page: Int = 1): TVShowsResponse
 
     @GET("tv/on_the_air")
-    suspend fun getOnTheAirTVShows(@Query("page") page: Int): TVShowsResponse
+    suspend fun getOnTheAirTVShows(@Query("page") page: Int = 1): TVShowsResponse
 
     @GET("tv/popular")
-    suspend fun getPopularTVShows(@Query("page") page: Int): TVShowsResponse
+    suspend fun getPopularTVShows(@Query("page") page: Int = 1): TVShowsResponse
 
     @GET("tv/top_rated")
-    suspend fun getTopRatedTVShows(@Query("page") page: Int): TVShowsResponse
+    suspend fun getTopRatedTVShows(@Query("page") page: Int = 1): TVShowsResponse
 
     @GET("tv/{tv_id}")
     suspend fun getTVShowDetails(@Path("id") tvShowId: Int): TVShowResponse

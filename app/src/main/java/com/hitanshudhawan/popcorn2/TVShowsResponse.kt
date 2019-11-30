@@ -11,7 +11,7 @@ data class TVShowBrief(
     val poster_path: String?,
     val id: Int,
     val backdrop_path: String?,
-    val vote_average: Number,
+    val vote_average: Double,
     val genre_ids: List<Int>,
     val name: String
 )

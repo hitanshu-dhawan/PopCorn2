@@ -13,5 +13,5 @@ data class MovieBrief(
     val id: Int,
     val title: String,
     val backdrop_path: String?,
-    val vote_average: Number
+    val vote_average: Double
 )

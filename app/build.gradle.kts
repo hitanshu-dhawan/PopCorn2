@@ -38,5 +38,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.6.2")
     implementation("com.squareup.retrofit2:converter-moshi:2.6.2")
 
+    // implementation("org.koin:koin-core:2.0.1")
+    implementation("org.koin:koin-android:2.0.1")
+    // implementation("org.koin:koin-android-viewmodel:2.0.1")
+
     testImplementation("junit:junit:4.12")
 }
