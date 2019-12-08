@@ -24,7 +24,7 @@ jobs:
 
       - run:
           name: Run Test Coverage
-          command: ./gradlew jacocoTestReport
+          command: ./gradlew jacocoTestDebugUnitTestReport
       - run:
           name: Upload Test Coverage Reports
           command: bash <(curl -s https://codecov.io/bash) -Z
