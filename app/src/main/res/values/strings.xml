@@ -5,13 +5,17 @@
     <string name="tv_shows">TV Shows</string>
     <string name="favorites">Favorites</string>
 
-<!--    <string name="now_playing">Now Playing</string>-->
-<!--    <string name="popular">Popular</string>-->
-<!--    <string name="upcoming">Upcoming</string>-->
-<!--    <string name="top_rated">Top Rated</string>-->
-<!--    <string name="airing_today">Airing Today</string>-->
-<!--    <string name="on_the_air">On The Air</string>-->
-<!--    <string name="view_all">View All</string>-->
+    <string name="movies_now_playing">Now Playing</string>
+    <string name="movies_popular">Popular</string>
+    <string name="movies_upcoming">Upcoming</string>
+    <string name="movies_top_rated">Top Rated</string>
+
+    <string name="tv_shows_airing_today">Airing Today</string>
+    <string name="tv_shows_on_the_air">On The Air</string>
+    <string name="tv_shows_popular">Popular</string>
+    <string name="tv_shows_top_rated">Top Rated</string>
+
+    <string name="view_all">View All</string>
 
     <string name="now_playing_movies">Now Playing Movies</string>
     <string name="popular_movies">Popular Movies</string>

@@ -11,7 +11,7 @@ android {
     compileSdkVersion(29)
     defaultConfig {
         applicationId = "com.hitanshudhawan.popcorn2"
-        minSdkVersion(21)
+        minSdkVersion(26)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
@@ -23,6 +23,10 @@ android {
     (kotlinOptions as KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    // dataBinding {
+    //     isEnabled = true
+    // }
 }
 
 dependencies {
@@ -44,7 +48,11 @@ dependencies {
 
     // implementation("org.koin:koin-core:2.0.1")
     implementation("org.koin:koin-android:2.0.1")
-    // implementation("org.koin:koin-android-viewmodel:2.0.1")
+    implementation("org.koin:koin-android-viewmodel:2.0.1")
+
+    implementation("com.afollestad:recyclical:1.1.1")
+
+    implementation("io.coil-kt:coil:0.8.0")
 
     testImplementation("junit:junit:4.12")
 }

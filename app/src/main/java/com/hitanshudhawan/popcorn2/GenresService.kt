@@ -5,9 +5,9 @@ import retrofit2.http.GET
 interface GenresService {
 
     @GET("genre/movie/list")
-    fun getMovieGenres(): GenresResponse
+    suspend fun getMovieGenres(): GenresResponse
 
     @GET("genre/tv/list")
-    fun getTVShowGenres(): GenresResponse
+    suspend fun getTVShowGenres(): GenresResponse
 
 }

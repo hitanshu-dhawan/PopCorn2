@@ -3,11 +3,23 @@ package com.hitanshudhawan.popcorn2
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
+val viewKoinModule = module {
+
+    viewModel { MoviesViewModel(get()) }
+
+}
+
+val repositoryKoinModule = module {
+
+    single { MoviesRepository(get()) }
+
+}
 
 val networkKoinModule = module {
 

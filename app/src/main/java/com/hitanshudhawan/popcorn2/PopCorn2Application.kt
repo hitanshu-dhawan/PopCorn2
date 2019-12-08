@@ -13,6 +13,8 @@ class PopCorn2Application : Application() {
             androidContext(this@PopCorn2Application)
             modules(
                 listOf(
+                    viewKoinModule,
+                    repositoryKoinModule,
                     networkKoinModule
                 )
             )
