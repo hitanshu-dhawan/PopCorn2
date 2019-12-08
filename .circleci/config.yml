@@ -1,22 +1,16 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/code
+    working_directory: ~/PopCorn2
     docker:
       - image: circleci/android:api-29
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
       - run:
           name: Run Lint Checks
@@ -27,6 +21,13 @@ jobs:
       - run:
           name: Build App
           command: ./gradlew assembleDebug
+
+      - run:
+          name: Run Test Coverage
+          command: ./gradlew jacocoTestReport
+      - run:
+          name: Upload Test Coverage Reports
+          command: bash <(curl -s https://codecov.io/bash) -Z
 
       - store_artifacts:
           path: app/build/reports
