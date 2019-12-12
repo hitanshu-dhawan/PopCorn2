@@ -3,12 +3,12 @@ package com.hitanshudhawan.popcorn2
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class CreditsResponse(
-    val cast: List<Cast>
+data class CreditsJsonResponse(
+    val cast: List<CastJson>
 )
 
 @JsonClass(generateAdapter = true)
-data class Cast(
+data class CastJson(
     val character: String,
     val id: Int,
     val name: String,

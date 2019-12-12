@@ -3,15 +3,15 @@ package com.hitanshudhawan.popcorn2
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TVShowsResponse(
+data class TVShowsJsonResponse(
     val page: Int,
-    val results: List<TVShowBrief>,
+    val results: List<TVShowBriefJson>,
     val total_results: Int,
     val total_pages: Int
 )
 
 @JsonClass(generateAdapter = true)
-data class TVShowBrief(
+data class TVShowBriefJson(
     val poster_path: String?,
     val id: Int,
     val backdrop_path: String?,

@@ -3,15 +3,15 @@ package com.hitanshudhawan.popcorn2
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TVShowResponse(
+data class TVShowJsonResponse(
     val backdrop_path: String?,
     val episode_run_time: List<Int>,
     val first_air_date: String,
-    val genres: List<Genre>,
+    val genres: List<GenreJson>,
     val homepage: String,
     val id: Int,
     val name: String,
-    val networks: List<Network>,
+    val networks: List<NetworkJson>,
     val origin_country: List<String>,
     val overview: String,
     val poster_path: String?,
@@ -20,6 +20,6 @@ data class TVShowResponse(
 )
 
 @JsonClass(generateAdapter = true)
-data class Network(
+data class NetworkJson(
     val name: String
 )
