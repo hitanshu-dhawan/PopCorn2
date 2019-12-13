@@ -1,6 +1,7 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.liveData
+import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepository(private val moviesService: MoviesService) {
 

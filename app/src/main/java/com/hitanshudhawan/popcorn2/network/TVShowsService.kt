@@ -1,5 +1,9 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.network
 
+import com.hitanshudhawan.popcorn2.network.models.CreditsJsonResponse
+import com.hitanshudhawan.popcorn2.network.models.TVShowJsonResponse
+import com.hitanshudhawan.popcorn2.network.models.TVShowsJsonResponse
+import com.hitanshudhawan.popcorn2.network.models.VideosJsonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
