@@ -1,8 +1,6 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.hitanshudhawan.popcorn2.network.models.MovieBriefJson
 
 class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
@@ -19,12 +17,12 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
 //        }
 //    }
 
-    val nowPlayingMovies: LiveData<List<MovieBriefJson>> = moviesRepository.getNowPlayingMovies()
+    val nowPlayingMovies = moviesRepository.getNowPlayingMovies()
 
-    val popularMovies: LiveData<List<MovieBriefJson>> = moviesRepository.getPopularMovies()
+    val popularMovies = moviesRepository.getPopularMovies()
 
-    val upcomingMovies: LiveData<List<MovieBriefJson>> = moviesRepository.getUpcomingMovies()
+    val upcomingMovies = moviesRepository.getUpcomingMovies()
 
-    val topRatedMovies: LiveData<List<MovieBriefJson>> = moviesRepository.getTopRatedMovies()
+    val topRatedMovies = moviesRepository.getTopRatedMovies()
 
 }

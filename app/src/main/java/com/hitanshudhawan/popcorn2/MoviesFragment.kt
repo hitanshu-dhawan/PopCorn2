@@ -47,7 +47,7 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop_path ?: "", it.title, it.vote_average, emptyList()) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, emptyList()) }))
                     withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                         onBind(::ShowBannerViewHolder) { index, item ->
                             backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
@@ -78,7 +78,7 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster_path ?: "", it.title) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster ?: "", it.title) }))
                     withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
                         onBind(::ShowCardViewHolder) { index, item ->
                             poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
@@ -109,7 +109,7 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop_path ?: "", it.title, it.vote_average, emptyList()) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, emptyList()) }))
                     withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                         onBind(::ShowBannerViewHolder) { index, item ->
                             backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
@@ -140,7 +140,7 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster_path ?: "", it.title) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster ?: "", it.title) }))
                     withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
                         onBind(::ShowCardViewHolder) { index, item ->
                             poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")

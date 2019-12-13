@@ -16,19 +16,19 @@ class MoviesRepository(private val moviesService: MoviesService) {
     //...
 
     fun getNowPlayingMovies() = liveData {
-        emit(moviesService.getNowPlayingMovies().results)
+        emit(moviesService.getNowPlayingMovies().results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
     }
 
     fun getPopularMovies() = liveData {
-        emit(moviesService.getPopularMovies().results)
+        emit(moviesService.getPopularMovies().results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
     }
 
     fun getUpcomingMovies() = liveData {
-        emit(moviesService.getUpcomingMovies().results)
+        emit(moviesService.getUpcomingMovies().results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
     }
 
     fun getTopRatedMovies() = liveData {
-        emit(moviesService.getTopRatedMovies().results)
+        emit(moviesService.getTopRatedMovies().results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
     }
 
     //...
