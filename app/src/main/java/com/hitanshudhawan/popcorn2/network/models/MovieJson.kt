@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 import java.util.*
 
 @JsonClass(generateAdapter = true)
-data class MovieJsonResponse(
+data class MovieJson(
     val backdrop_path: String?,
     val genres: List<GenreJson>,
     val homepage: String?,

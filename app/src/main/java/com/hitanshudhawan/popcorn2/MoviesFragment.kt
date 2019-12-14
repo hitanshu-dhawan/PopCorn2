@@ -47,11 +47,13 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, emptyList()) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
                     withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                         onBind(::ShowBannerViewHolder) { index, item ->
                             backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
                             title.text = item.title
+                            rating.text = "${item.rating}*"
+                            genres.text = item.genres.joinToString()
                             //...
                         }
                     }
@@ -109,11 +111,13 @@ class MoviesFragment : Fragment() {
                     }
                 })
                 setup {
-                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, emptyList()) }))
+                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
                     withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                         onBind(::ShowBannerViewHolder) { index, item ->
                             backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
                             title.text = item.title
+                            rating.text = "${item.rating}*"
+                            genres.text = item.genres.joinToString()
                             //...
                         }
                     }

@@ -3,7 +3,7 @@ package com.hitanshudhawan.popcorn2.network.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class CreditsJsonResponse(
+data class CreditsJson(
     val cast: List<CastJson>
 )
 

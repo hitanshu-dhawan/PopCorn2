@@ -3,7 +3,7 @@ package com.hitanshudhawan.popcorn2.network.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GenresJsonResponse(
+data class GenresJson(
     val genres: List<GenreJson>
 )
 

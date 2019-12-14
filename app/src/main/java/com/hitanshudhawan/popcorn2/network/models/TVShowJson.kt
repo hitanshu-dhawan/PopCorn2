@@ -3,7 +3,7 @@ package com.hitanshudhawan.popcorn2.network.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TVShowJsonResponse(
+data class TVShowJson(
     val backdrop_path: String?,
     val episode_run_time: List<Int>,
     val first_air_date: String,

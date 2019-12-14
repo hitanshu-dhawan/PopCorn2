@@ -25,13 +25,15 @@
 
         <TextView
             android:id="@+id/title_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/backdrop_image_view"
+            app:layout_constraintEnd_toStartOf="@id/rating_text_view"
             app:layout_constraintStart_toStartOf="@id/backdrop_image_view"
             tools:text="Joker" />
 

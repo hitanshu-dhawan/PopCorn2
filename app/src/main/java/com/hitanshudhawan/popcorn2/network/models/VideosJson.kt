@@ -3,7 +3,7 @@ package com.hitanshudhawan.popcorn2.network.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class VideosJsonResponse(
+data class VideosJson(
     val results: List<VideoJson>
 )
 
