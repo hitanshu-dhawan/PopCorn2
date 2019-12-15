@@ -14,6 +14,7 @@ class PopCorn2Application : Application() {
             modules(
                 listOf(
                     viewKoinModule,
+                    useCasesKoinModule,
                     repositoryKoinModule,
                     networkKoinModule
                 )

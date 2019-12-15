@@ -6,5 +6,5 @@ data class MovieBrief(
     val poster: String?,
     val backdrop: String?,
     val rating: Double,
-    val genres: List<String>
+    val genreIds: List<Int>
 )

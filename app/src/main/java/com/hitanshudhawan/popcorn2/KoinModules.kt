@@ -19,9 +19,16 @@ val viewKoinModule = module {
 
 }
 
+val useCasesKoinModule = module {
+
+    single<MoviesUseCases> { MoviesUseCasesImpl(get(), get()) }
+
+}
+
 val repositoryKoinModule = module {
 
-    single { MoviesRepository(get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+    single<GenresRepository> { GenresRepositoryImpl(get()) }
 
 }
 

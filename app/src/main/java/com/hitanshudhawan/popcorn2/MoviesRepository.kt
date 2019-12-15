@@ -1,48 +1,15 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.liveData
-import com.hitanshudhawan.popcorn2.network.MoviesService
+import androidx.lifecycle.LiveData
 
-class MoviesRepository(private val moviesService: MoviesService) {
+interface MoviesRepository {
 
-//    suspend fun getNowPlayingMovies(): List<MovieBriefJson> {
-//        return moviesService.getNowPlayingMovies().results
-//    }
+    fun getNowPlayingMovies(): LiveData<Resource<List<MovieBrief>>>
 
-//    suspend fun getPopularMovies(): List<MovieBriefJson> {
-//        return moviesService.getPopularMovies().results
-//    }
+    fun getPopularMovies(): LiveData<Resource<List<MovieBrief>>>
 
-    //...
+    fun getUpcomingMovies(): LiveData<Resource<List<MovieBrief>>>
 
-    fun getNowPlayingMovies() = liveData {
-        val response = moviesService.getNowPlayingMovies()
-        if (response.isSuccessful) {
-            emit(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
-        }
-    }
-
-    fun getPopularMovies() = liveData {
-        val response = moviesService.getPopularMovies()
-        if (response.isSuccessful) {
-            emit(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
-        }
-    }
-
-    fun getUpcomingMovies() = liveData {
-        val response = moviesService.getUpcomingMovies()
-        if (response.isSuccessful) {
-            emit(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
-        }
-    }
-
-    fun getTopRatedMovies() = liveData {
-        val response = moviesService.getTopRatedMovies()
-        if (response.isSuccessful) {
-            emit(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids.map { it.toString() }) })
-        }
-    }
-
-    //...
+    fun getTopRatedMovies(): LiveData<Resource<List<MovieBrief>>>
 
 }
