@@ -55,6 +55,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc03")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc03")
 
+    // implementation("com.snakydesign.livedataextensions:lives:1.3.0")
+
     implementation("com.afollestad:recyclical:1.1.1")
 
     implementation("io.coil-kt:coil:0.8.0")

@@ -1,71 +1,42 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.map
+
 
 class MoviesUseCasesImpl(
     private val moviesRepository: MoviesRepository,
     private val genresRepository: GenresRepository
 ) : MoviesUseCases {
 
-    override fun getNowPlayingMovies(): LiveData<Resource<List<ShowBannerData>>> {
-        val movieBriefsLiveData = moviesRepository.getNowPlayingMovies()
-        val genresLiveData = genresRepository.getMovieGenres()
-
-        val showBannersLiveData = MediatorLiveData<Resource<List<ShowBannerData>>>()
-
-        showBannersLiveData.addSource(movieBriefsLiveData) {
-            showBannersLiveData.value = getShowBannerData(movieBriefsLiveData, genresLiveData)
-        }
-        showBannersLiveData.addSource(genresLiveData) {
-            showBannersLiveData.value = getShowBannerData(movieBriefsLiveData, genresLiveData)
-        }
-
-        return showBannersLiveData
+    override fun getNowPlayingMovies() = zip(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
+        getShowBannerData(movieBriefs, genres)
     }
 
-    override fun getPopularMovies(): LiveData<Resource<List<ShowCardData>>> {
-        val movieBriefsLiveData = moviesRepository.getPopularMovies()
-        val genresLiveData = genresRepository.getMovieGenres()
-
-        val showCardsLiveData = MediatorLiveData<Resource<List<ShowCardData>>>()
-
-        showCardsLiveData.addSource(movieBriefsLiveData) {
-            showCardsLiveData.value = getShowCardData(movieBriefsLiveData, genresLiveData)
-        }
-        showCardsLiveData.addSource(genresLiveData) {
-            showCardsLiveData.value = getShowCardData(movieBriefsLiveData, genresLiveData)
-        }
-
-        return showCardsLiveData
+    override fun getPopularMovies() = moviesRepository.getPopularMovies().map { movieBriefs ->
+        getShowCardData(movieBriefs)
     }
 
-    private fun getShowBannerData(movieBriefsLiveData: LiveData<Resource<List<MovieBrief>>>, genresLiveData: LiveData<Resource<List<Genre>>>): Resource<List<ShowBannerData>> {
-        val movieBriefs = movieBriefsLiveData.value
-        val genres = genresLiveData.value
-        if (movieBriefs != null && genres != null) {
-            if (movieBriefs is Resource.Success && genres is Resource.Success) {
-                return Resource.Success(movieBriefs.data.map { ShowBannerData(it.backdrop!!, it.title, it.rating, it.genreIds.map { id -> genres.data.find { id == it.id }!!.name }) }) //todo
-            }
-            if (movieBriefs is Resource.Error || genres is Resource.Error) {
-                return Resource.Error()
-            }
-        }
+    override fun getUpcomingMovies() = zip(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
+        getShowBannerData(movieBriefs, genres)
+    }
+
+    override fun getTopRatedMovies() = moviesRepository.getTopRatedMovies().map { movieBriefs ->
+        getShowCardData(movieBriefs)
+    }
+
+    private fun getShowBannerData(movieBriefs: Resource<List<MovieBrief>>, genres: Resource<List<Genre>>): Resource<List<ShowBannerData>> {
+        if (movieBriefs is Resource.Success && genres is Resource.Success)
+            return Resource.Success(movieBriefs.data.map { ShowBannerData(it.backdrop!!, it.title, it.rating, it.genreIds.map { id -> genres.data.find { id == it.id }!!.name }) })
+        if (movieBriefs is Resource.Error || genres is Resource.Error)
+            return Resource.Error()
         return Resource.Loading()
     }
 
-    // hitanshu : genresLiveData is not required
-    private fun getShowCardData(movieBriefsLiveData: LiveData<Resource<List<MovieBrief>>>, genresLiveData: LiveData<Resource<List<Genre>>>): Resource<List<ShowCardData>> {
-        val movieBriefs = movieBriefsLiveData.value
-        val genres = genresLiveData.value
-        if (movieBriefs != null && genres != null) {
-            if (movieBriefs is Resource.Success && genres is Resource.Success) {
-                return Resource.Success(movieBriefs.data.map { ShowCardData(it.poster!!, it.title) }) //todo
-            }
-            if (movieBriefs is Resource.Error || genres is Resource.Error) {
-                return Resource.Error()
-            }
-        }
+    private fun getShowCardData(movieBriefs: Resource<List<MovieBrief>>): Resource<List<ShowCardData>> {
+        if (movieBriefs is Resource.Success)
+            return Resource.Success(movieBriefs.data.map { ShowCardData(it.poster!!, it.title) })
+        if (movieBriefs is Resource.Error)
+            return Resource.Error()
         return Resource.Loading()
     }
 

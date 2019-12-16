@@ -8,6 +8,8 @@ interface MoviesUseCases {
 
     fun getPopularMovies(): LiveData<Resource<List<ShowCardData>>>
 
-    //...
+    fun getUpcomingMovies(): LiveData<Resource<List<ShowBannerData>>>
+
+    fun getTopRatedMovies(): LiveData<Resource<List<ShowCardData>>>
 
 }

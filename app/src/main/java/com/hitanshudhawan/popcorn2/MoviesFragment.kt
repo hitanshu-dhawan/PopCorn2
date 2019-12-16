@@ -28,139 +28,9 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        moviesViewModel.nowPlayingMovies.observe(viewLifecycleOwner, Observer {
-//            now_playing_recycler_view.apply {
-//                layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
-//                    override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-//                        lp?.run { width = (getWidth() * 0.9).toInt() }
-//                        return true
-//                    }
-//                }
-//                addItemDecoration(object : RecyclerView.ItemDecoration() {
-//                    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-//                        with(outRect) {
-//                            top = 8.toPx()
-//                            bottom = 8.toPx()
-//                            if (parent.getChildAdapterPosition(view) == 0)
-//                                left = 8.toPx()
-//                            right = 8.toPx()
-//                        }
-//                    }
-//                })
-//                setup {
-//                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
-//                    withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
-//                        onBind(::ShowBannerViewHolder) { index, item ->
-//                            backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
-//                            title.text = item.title
-//                            rating.text = "${item.rating}*"
-//                            genres.text = item.genres.joinToString()
-//                            //...
-//                        }
-//                    }
-//                }
-//            }
-//        })
-//        moviesViewModel.popularMovies.observe(viewLifecycleOwner, Observer {
-//            popular_recycler_view.apply {
-//                layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
-//                    override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-//                        lp?.run { width = (getWidth() * 0.3).toInt() }
-//                        return true
-//                    }
-//                }
-//                addItemDecoration(object : RecyclerView.ItemDecoration() {
-//                    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-//                        with(outRect) {
-//                            top = 8.toPx()
-//                            bottom = 8.toPx()
-//                            if (parent.getChildAdapterPosition(view) == 0)
-//                                left = 8.toPx()
-//                            right = 8.toPx()
-//                        }
-//                    }
-//                })
-//                setup {
-//                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster ?: "", it.title) }))
-//                    withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
-//                        onBind(::ShowCardViewHolder) { index, item ->
-//                            poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
-//                            title.text = item.title
-//                            //...
-//                        }
-//                    }
-//                }
-//            }
-//        })
-//        moviesViewModel.upcomingMovies.observe(viewLifecycleOwner, Observer {
-//            upcoming_recycler_view.apply {
-//                layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
-//                    override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-//                        lp?.run { width = (getWidth() * 0.9).toInt() }
-//                        return true
-//                    }
-//                }
-//                addItemDecoration(object : RecyclerView.ItemDecoration() {
-//                    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-//                        with(outRect) {
-//                            top = 8.toPx()
-//                            bottom = 8.toPx()
-//                            if (parent.getChildAdapterPosition(view) == 0)
-//                                left = 8.toPx()
-//                            right = 8.toPx()
-//                        }
-//                    }
-//                })
-//                setup {
-//                    withDataSource(dataSourceTypedOf(it.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
-//                    withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
-//                        onBind(::ShowBannerViewHolder) { index, item ->
-//                            backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
-//                            title.text = item.title
-//                            rating.text = "${item.rating}*"
-//                            genres.text = item.genres.joinToString()
-//                            //...
-//                        }
-//                    }
-//                }
-//            }
-//        })
-//        moviesViewModel.topRatedMovies.observe(viewLifecycleOwner, Observer {
-//            top_rated_recycler_view.apply {
-//                layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
-//                    override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-//                        lp?.run { width = (getWidth() * 0.3).toInt() }
-//                        return true
-//                    }
-//                }
-//                addItemDecoration(object : RecyclerView.ItemDecoration() {
-//                    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-//                        with(outRect) {
-//                            top = 8.toPx()
-//                            bottom = 8.toPx()
-//                            if (parent.getChildAdapterPosition(view) == 0)
-//                                left = 8.toPx()
-//                            right = 8.toPx()
-//                        }
-//                    }
-//                })
-//                setup {
-//                    withDataSource(dataSourceTypedOf(it.map { ShowCardData(it.poster ?: "", it.title) }))
-//                    withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
-//                        onBind(::ShowCardViewHolder) { index, item ->
-//                            poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
-//                            title.text = item.title
-//                            //...
-//                        }
-//                    }
-//                }
-//            }
-//        })
-
         moviesViewModel.moviesState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is MoviesState.Success -> {
-
                     views.visibility = View.VISIBLE
                     progress_bar.visibility = View.GONE
 
@@ -195,7 +65,6 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
-
                     popular_recycler_view.apply {
                         layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
                             override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
@@ -225,7 +94,66 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
-
+                    upcoming_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.9).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(object : RecyclerView.ItemDecoration() {
+                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                                with(outRect) {
+                                    top = 8.toPx()
+                                    bottom = 8.toPx()
+                                    if (parent.getChildAdapterPosition(view) == 0)
+                                        left = 8.toPx()
+                                    right = 8.toPx()
+                                }
+                            }
+                        })
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.upcomingMovies.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
+                            withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
+                                onBind(::ShowBannerViewHolder) { index, item ->
+                                    backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
+                                    title.text = item.title
+                                    rating.text = "${item.rating}*"
+                                    genres.text = item.genres.joinToString()
+                                    //...
+                                }
+                            }
+                        }
+                    }
+                    top_rated_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.3).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(object : RecyclerView.ItemDecoration() {
+                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                                with(outRect) {
+                                    top = 8.toPx()
+                                    bottom = 8.toPx()
+                                    if (parent.getChildAdapterPosition(view) == 0)
+                                        left = 8.toPx()
+                                    right = 8.toPx()
+                                }
+                            }
+                        })
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.topRatedMovies.map { ShowCardData(it.poster ?: "", it.title) }))
+                            withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
+                                onBind(::ShowCardViewHolder) { index, item ->
+                                    poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
+                                    title.text = item.title
+                                    //...
+                                }
+                            }
+                        }
+                    }
                 }
                 is MoviesState.Error -> {
                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
@@ -238,7 +166,5 @@ class MoviesFragment : Fragment() {
         })
 
     }
-
-    //...
 
 }
