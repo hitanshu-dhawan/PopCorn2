@@ -1,27 +1,35 @@
 package com.hitanshudhawan.popcorn2
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-
 
 class MoviesUseCasesImpl(
     private val moviesRepository: MoviesRepository,
     private val genresRepository: GenresRepository
 ) : MoviesUseCases {
 
-    override fun getNowPlayingMovies() = zip(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-        getShowBannerData(movieBriefs, genres)
+    override fun getNowPlayingMovies(): LiveData<Resource<List<ShowBannerData>>> {
+        return zip(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
+            getShowBannerData(movieBriefs, genres)
+        }
     }
 
-    override fun getPopularMovies() = moviesRepository.getPopularMovies().map { movieBriefs ->
-        getShowCardData(movieBriefs)
+    override fun getPopularMovies(): LiveData<Resource<List<ShowCardData>>> {
+        return moviesRepository.getPopularMovies().map { movieBriefs ->
+            getShowCardData(movieBriefs)
+        }
     }
 
-    override fun getUpcomingMovies() = zip(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-        getShowBannerData(movieBriefs, genres)
+    override fun getUpcomingMovies(): LiveData<Resource<List<ShowBannerData>>> {
+        return zip(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
+            getShowBannerData(movieBriefs, genres)
+        }
     }
 
-    override fun getTopRatedMovies() = moviesRepository.getTopRatedMovies().map { movieBriefs ->
-        getShowCardData(movieBriefs)
+    override fun getTopRatedMovies(): LiveData<Resource<List<ShowCardData>>> {
+        return moviesRepository.getTopRatedMovies().map { movieBriefs ->
+            getShowCardData(movieBriefs)
+        }
     }
 
     private fun getShowBannerData(movieBriefs: Resource<List<MovieBrief>>, genres: Resource<List<Genre>>): Resource<List<ShowBannerData>> {
