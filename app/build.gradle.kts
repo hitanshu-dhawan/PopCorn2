@@ -20,9 +20,7 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            if (project.hasProperty("MOVIE_DB_API_KEY")) {
-                buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-            }
+            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
         }
     }
     compileOptions {
