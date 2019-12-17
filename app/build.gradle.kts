@@ -21,6 +21,7 @@ android {
     }
 
     signingConfigs {
+
         getByName("debug") {
             keyAlias = "popcorn2"
             keyPassword = "popcorn2"
