@@ -11,6 +11,7 @@ plugins {
 
 android {
     compileSdkVersion(29)
+
     defaultConfig {
         applicationId = "com.hitanshudhawan.popcorn2"
         minSdkVersion(21)
@@ -18,11 +19,23 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "popcorn2"
+            keyPassword = "popcorn2"
+            storeFile = rootProject.file("popcorn2keystore.jks")
+            storePassword = "popcorn2"
+        }
+    }
+
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
