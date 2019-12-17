@@ -21,12 +21,11 @@ android {
     }
 
     signingConfigs {
-
         getByName("debug") {
-            keyAlias = "popcorn2"
-            keyPassword = "popcorn2"
-            storeFile = rootProject.file("keystore.jks")
-            storePassword = "popcorn2"
+            keyAlias = project.property("keyAlias") as String
+            keyPassword = project.property("keyPassword") as String
+            storeFile = rootProject.file(project.property("storeFile") as String)
+            storePassword = project.property("storePassword") as String
         }
     }
 
