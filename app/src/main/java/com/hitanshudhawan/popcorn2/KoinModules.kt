@@ -37,7 +37,7 @@ val networkKoinModule = module {
     // OkHttpClient
     single {
         OkHttpClient.Builder()
-            .addInterceptor(ApiKeyInterceptor())
+            .addInterceptor(ApiKeyInterceptor(BuildConfig.API_KEY))
             .build()
     }
 

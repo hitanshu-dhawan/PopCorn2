@@ -19,6 +19,9 @@ jobs:
           name: Run Tests
           command: ./gradlew testDebug
       - run:
+          name: Decode Keystore
+          command: echo $KEYSTORE_BASE64 | base64 --decode > keystore.jks
+      - run:
           name: Build App
           command: ./gradlew assembleDebug
 
@@ -28,6 +31,9 @@ jobs:
       - run:
           name: Upload Test Coverage Reports
           command: bash <(curl -s https://codecov.io/bash) -Z
+      - run:
+          name: Upload Test Coverage Reports
+          command: bash <(curl -s https://coverage.codacy.com/get.sh)
 
       - store_artifacts:
           path: app/build/reports
