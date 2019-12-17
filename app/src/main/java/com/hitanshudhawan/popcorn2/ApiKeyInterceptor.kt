@@ -3,7 +3,7 @@ package com.hitanshudhawan.popcorn2
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class ApiKeyInterceptor : Interceptor {
+class ApiKeyInterceptor(private val apiKey: String) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
@@ -12,7 +12,7 @@ class ApiKeyInterceptor : Interceptor {
         val newRequest = originalRequest.newBuilder()
             .url(
                 originalUrl.newBuilder()
-                    .addQueryParameter("api_key", "460c0511e1ef5e2eca8734c04a5fb842")
+                    .addQueryParameter("api_key", apiKey)
                     .build()
             )
             .build()

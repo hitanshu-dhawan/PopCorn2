@@ -18,6 +18,13 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    buildTypes {
+        getByName("debug") {
+            if (project.hasProperty("MOVIE_DB_API_KEY")) {
+                buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
