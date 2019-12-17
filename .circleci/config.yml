@@ -19,6 +19,9 @@ jobs:
           name: Run Tests
           command: ./gradlew testDebug
       - run:
+          name: Decode Keystore
+          command: echo $KEYSTORE_BASE64 | base64 --decode > keystore.jks
+      - run:
           name: Build App
           command: ./gradlew assembleDebug
 
