@@ -24,7 +24,7 @@ android {
         getByName("debug") {
             keyAlias = "popcorn2"
             keyPassword = "popcorn2"
-            storeFile = rootProject.file("popcorn2keystore.jks")
+            storeFile = rootProject.file("keystore.jks")
             storePassword = "popcorn2"
         }
     }
