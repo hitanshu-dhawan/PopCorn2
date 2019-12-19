@@ -6,4 +6,6 @@ interface GenresRepository {
 
     fun getMovieGenres(): LiveData<Resource<List<Genre>>>
 
+    fun getTVShowGenres(): LiveData<Resource<List<Genre>>>
+
 }

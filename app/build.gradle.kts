@@ -79,5 +79,10 @@ dependencies {
 
     implementation("io.coil-kt:coil:0.8.0")
 
+    implementation("androidx.room:room-runtime:2.2.3")
+    kapt("androidx.room:room-compiler:2.2.3")
+    implementation("androidx.room:room-ktx:2.2.3")
+    testImplementation("androidx.room:room-testing:2.2.3")
+
     testImplementation("junit:junit:4.12")
 }

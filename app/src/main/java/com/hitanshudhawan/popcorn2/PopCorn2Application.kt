@@ -16,6 +16,7 @@ class PopCorn2Application : Application() {
                     viewKoinModule,
                     useCasesKoinModule,
                     repositoryKoinModule,
+                    databaseKoinModule,
                     networkKoinModule
                 )
             )

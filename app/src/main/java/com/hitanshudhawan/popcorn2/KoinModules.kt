@@ -1,5 +1,7 @@
 package com.hitanshudhawan.popcorn2
 
+import androidx.room.Room
+import com.hitanshudhawan.popcorn2.database.CacheDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
 import com.hitanshudhawan.popcorn2.network.GenresService
 import com.hitanshudhawan.popcorn2.network.MoviesService
@@ -7,6 +9,7 @@ import com.hitanshudhawan.popcorn2.network.TVShowsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -28,7 +31,22 @@ val useCasesKoinModule = module {
 val repositoryKoinModule = module {
 
     single<MoviesRepository> { MoviesRepositoryImpl(get()) }
-    single<GenresRepository> { GenresRepositoryImpl(get()) }
+    single<GenresRepository> { GenresRepositoryImpl(get(), get()) }
+
+}
+
+val databaseKoinModule = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            CacheDatabase::class.java,
+            CacheDatabase::class.java.simpleName
+        ).build()
+    }
+
+    //...
+    single { get<CacheDatabase>().genresDao() }
 
 }
 
