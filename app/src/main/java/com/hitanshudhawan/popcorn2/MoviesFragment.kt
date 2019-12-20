@@ -1,6 +1,5 @@
 package com.hitanshudhawan.popcorn2
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,17 +40,7 @@ class MoviesFragment : Fragment() {
                                 return true
                             }
                         }
-                        addItemDecoration(object : RecyclerView.ItemDecoration() {
-                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                                with(outRect) {
-                                    top = 8.toPx()
-                                    bottom = 8.toPx()
-                                    if (parent.getChildAdapterPosition(view) == 0)
-                                        left = 8.toPx()
-                                    right = 8.toPx()
-                                }
-                            }
-                        })
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
                             withDataSource(dataSourceTypedOf(it.nowPlayingMovies.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
                             withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
@@ -72,17 +61,7 @@ class MoviesFragment : Fragment() {
                                 return true
                             }
                         }
-                        addItemDecoration(object : RecyclerView.ItemDecoration() {
-                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                                with(outRect) {
-                                    top = 8.toPx()
-                                    bottom = 8.toPx()
-                                    if (parent.getChildAdapterPosition(view) == 0)
-                                        left = 8.toPx()
-                                    right = 8.toPx()
-                                }
-                            }
-                        })
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
                             withDataSource(dataSourceTypedOf(it.popularMovies.map { ShowCardData(it.poster ?: "", it.title) }))
                             withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
@@ -101,17 +80,7 @@ class MoviesFragment : Fragment() {
                                 return true
                             }
                         }
-                        addItemDecoration(object : RecyclerView.ItemDecoration() {
-                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                                with(outRect) {
-                                    top = 8.toPx()
-                                    bottom = 8.toPx()
-                                    if (parent.getChildAdapterPosition(view) == 0)
-                                        left = 8.toPx()
-                                    right = 8.toPx()
-                                }
-                            }
-                        })
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
                             withDataSource(dataSourceTypedOf(it.upcomingMovies.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
                             withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
@@ -132,17 +101,7 @@ class MoviesFragment : Fragment() {
                                 return true
                             }
                         }
-                        addItemDecoration(object : RecyclerView.ItemDecoration() {
-                            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                                with(outRect) {
-                                    top = 8.toPx()
-                                    bottom = 8.toPx()
-                                    if (parent.getChildAdapterPosition(view) == 0)
-                                        left = 8.toPx()
-                                    right = 8.toPx()
-                                }
-                            }
-                        })
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
                             withDataSource(dataSourceTypedOf(it.topRatedMovies.map { ShowCardData(it.poster ?: "", it.title) }))
                             withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
