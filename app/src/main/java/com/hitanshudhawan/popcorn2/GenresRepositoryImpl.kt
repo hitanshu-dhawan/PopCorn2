@@ -12,6 +12,7 @@ class GenresRepositoryImpl(
 ) : GenresRepository {
 
     // hitanshu : make something like NetworkBoundResource
+    // or use libraries like Store : https://github.com/dropbox/Store
     override fun getMovieGenres() = liveData<Resource<List<Genre>>> {
         emit(Resource.Loading())
         val genreEntities = genresDao.getMovieGenres()
@@ -29,6 +30,7 @@ class GenresRepositoryImpl(
     }
 
     // hitanshu : make something like NetworkBoundResource
+    // or use libraries like Store : https://github.com/dropbox/Store
     override fun getTVShowGenres() = liveData<Resource<List<Genre>>> {
         emit(Resource.Loading())
         val genreEntities = genresDao.getTVShowGenres()
