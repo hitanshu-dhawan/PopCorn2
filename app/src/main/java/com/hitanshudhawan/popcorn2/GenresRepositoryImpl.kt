@@ -20,12 +20,12 @@ class GenresRepositoryImpl(
             emit(Resource.Success(genreEntities.map { Genre(it.id, it.name) }))
             val response = safe { genresService.getMovieGenres() }
             if (response != null && response.isSuccessful) {
-                genresDao.insertMovieGenres(response.body()!!.genres.map { MovieGenreEntity(it.id, it.name) })
+                genresDao.insertMovieGenres(response.body()!!.genres.mapIndexed { index, it -> MovieGenreEntity(index, it.id, it.name) })
             }
         } else {
             val response = safe { genresService.getMovieGenres() }
             if (response != null && response.isSuccessful) {
-                genresDao.insertMovieGenres(response.body()!!.genres.map { MovieGenreEntity(it.id, it.name) })
+                genresDao.insertMovieGenres(response.body()!!.genres.mapIndexed { index, it -> MovieGenreEntity(index, it.id, it.name) })
                 emit(Resource.Success(response.body()!!.genres.map { Genre(it.id, it.name) }))
             } else {
                 emit(Resource.Error())
@@ -42,12 +42,12 @@ class GenresRepositoryImpl(
             emit(Resource.Success(genreEntities.map { Genre(it.id, it.name) }))
             val response = safe { genresService.getTVShowGenres() }
             if (response != null && response.isSuccessful) {
-                genresDao.insertTVShowGenres(response.body()!!.genres.map { TVShowGenreEntity(it.id, it.name) })
+                genresDao.insertTVShowGenres(response.body()!!.genres.mapIndexed { index, it -> TVShowGenreEntity(index, it.id, it.name) })
             }
         } else {
             val response = safe { genresService.getTVShowGenres() }
             if (response != null && response.isSuccessful) {
-                genresDao.insertTVShowGenres(response.body()!!.genres.map { TVShowGenreEntity(it.id, it.name) })
+                genresDao.insertTVShowGenres(response.body()!!.genres.mapIndexed { index, it -> TVShowGenreEntity(index, it.id, it.name) })
                 emit(Resource.Success(response.body()!!.genres.map { Genre(it.id, it.name) }))
             } else {
                 emit(Resource.Error())

@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class TVShowGenreEntity(
     @PrimaryKey
+    val orderIndex: Int,
     val id: Int,
     val name: String
 )

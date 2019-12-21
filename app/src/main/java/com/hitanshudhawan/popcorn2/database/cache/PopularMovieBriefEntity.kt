@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class PopularMovieBriefEntity(
     @PrimaryKey
+    val orderIndex: Int,
     val id: Int,
     val title: String,
     val poster: String?,

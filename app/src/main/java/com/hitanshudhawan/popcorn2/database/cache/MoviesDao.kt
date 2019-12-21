@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
-// hitanshu : Can we club all ****MovieBriefEntity classes into one
 @Dao
 interface MoviesDao {
 
@@ -35,4 +34,5 @@ interface MoviesDao {
 
 }
 
-// hitanshu : insert methods should first delete old values
+// hitanshu : Can we club all ****MovieBriefEntity classes into one
+// hitanshu : insert methods should first delete old values : write test cases for it
