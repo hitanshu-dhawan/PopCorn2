@@ -34,3 +34,5 @@ interface MoviesDao {
     suspend fun insertTopRatedMovies(movieBriefEntities: List<TopRatedMovieBriefEntity>)
 
 }
+
+// hitanshu : insert methods should first delete old values

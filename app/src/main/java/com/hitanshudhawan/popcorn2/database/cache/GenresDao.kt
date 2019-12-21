@@ -21,3 +21,5 @@ interface GenresDao {
     suspend fun insertTVShowGenres(genreEntities: List<TVShowGenreEntity>)
 
 }
+
+// hitanshu : insert methods should first delete old values
