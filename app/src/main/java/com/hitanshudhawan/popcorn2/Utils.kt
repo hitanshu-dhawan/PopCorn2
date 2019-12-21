@@ -151,3 +151,12 @@ fun <A, B, C, D, Z> zip(first: LiveData<A>, second: LiveData<B>, third: LiveData
 
     return finalLiveData
 }
+
+// hitanshu : write documentation
+suspend fun <T> safe(call: suspend () -> T): T? {
+    return try {
+        call()
+    } catch (e: Exception) {
+        null
+    }
+}

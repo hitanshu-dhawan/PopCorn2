@@ -20,8 +20,8 @@ class GenresRepositoryImpl(
         if (genreEntities.isNotEmpty()) {
             emit(Resource.Success(genreEntities.map { Genre(it.id, it.name) }))
         } else {
-            val response = genresService.getMovieGenres()
-            if (response.isSuccessful) {
+            val response = safe { genresService.getMovieGenres() }
+            if (response != null && response.isSuccessful) {
                 genresDao.insertMovieGenres(response.body()!!.genres.map { MovieGenreEntity(it.id, it.name) })
                 emit(Resource.Success(response.body()!!.genres.map { Genre(it.id, it.name) }))
             } else {
@@ -39,8 +39,8 @@ class GenresRepositoryImpl(
         if (genreEntities.isNotEmpty()) {
             emit(Resource.Success(genreEntities.map { Genre(it.id, it.name) }))
         } else {
-            val response = genresService.getTVShowGenres()
-            if (response.isSuccessful) {
+            val response = safe { genresService.getTVShowGenres() }
+            if (response != null && response.isSuccessful) {
                 genresDao.insertTVShowGenres(response.body()!!.genres.map { TVShowGenreEntity(it.id, it.name) })
                 emit(Resource.Success(response.body()!!.genres.map { Genre(it.id, it.name) }))
             } else {

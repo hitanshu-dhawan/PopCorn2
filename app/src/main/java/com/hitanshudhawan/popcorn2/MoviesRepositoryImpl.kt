@@ -13,8 +13,8 @@ class MoviesRepositoryImpl(
 
     override fun getNowPlayingMovies() = liveData<Resource<List<MovieBrief>>> {
         emit(Resource.Loading())
-        val response = moviesService.getNowPlayingMovies()
-        if (response.isSuccessful) {
+        val response = safe { moviesService.getNowPlayingMovies() }
+        if (response != null && response.isSuccessful) {
             moviesDao.insertNowPlayingMovies(response.body()!!.results.map { NowPlayingMovieBriefEntity(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
             emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
         } else {
@@ -29,8 +29,8 @@ class MoviesRepositoryImpl(
 
     override fun getPopularMovies() = liveData<Resource<List<MovieBrief>>> {
         emit(Resource.Loading())
-        val response = moviesService.getPopularMovies()
-        if (response.isSuccessful) {
+        val response = safe { moviesService.getPopularMovies() }
+        if (response != null && response.isSuccessful) {
             moviesDao.insertPopularMovies(response.body()!!.results.map { PopularMovieBriefEntity(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
             emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
         } else {
@@ -45,8 +45,8 @@ class MoviesRepositoryImpl(
 
     override fun getUpcomingMovies() = liveData<Resource<List<MovieBrief>>> {
         emit(Resource.Loading())
-        val response = moviesService.getUpcomingMovies()
-        if (response.isSuccessful) {
+        val response = safe { moviesService.getUpcomingMovies() }
+        if (response != null && response.isSuccessful) {
             moviesDao.insertUpcomingMovies(response.body()!!.results.map { UpcomingMovieBriefEntity(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
             emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
         } else {
@@ -61,8 +61,8 @@ class MoviesRepositoryImpl(
 
     override fun getTopRatedMovies() = liveData<Resource<List<MovieBrief>>> {
         emit(Resource.Loading())
-        val response = moviesService.getTopRatedMovies()
-        if (response.isSuccessful) {
+        val response = safe { moviesService.getTopRatedMovies() }
+        if (response != null && response.isSuccessful) {
             moviesDao.insertTopRatedMovies(response.body()!!.results.map { TopRatedMovieBriefEntity(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
             emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
         } else {

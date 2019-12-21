@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-// hitanshu : write document
+// hitanshu : write documentation
 class LinearLayoutMarginDecoration(
     private val verticalMargin: Int,
     private val horizontalMargin: Int,
