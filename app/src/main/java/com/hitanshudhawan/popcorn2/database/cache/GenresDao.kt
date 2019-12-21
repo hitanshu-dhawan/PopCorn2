@@ -1,4 +1,4 @@
-package com.hitanshudhawan.popcorn2.database
+package com.hitanshudhawan.popcorn2.database.cache
 
 import androidx.room.Dao
 import androidx.room.Insert

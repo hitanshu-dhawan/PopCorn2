@@ -1,10 +1,12 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.liveData
+import com.hitanshudhawan.popcorn2.database.cache.MoviesDao
 import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepositoryImpl(
-    private val moviesService: MoviesService
+    private val moviesService: MoviesService,
+    private val moviesDao: MoviesDao
 ) : MoviesRepository {
 
     override fun getNowPlayingMovies() = liveData<Resource<List<MovieBrief>>> {

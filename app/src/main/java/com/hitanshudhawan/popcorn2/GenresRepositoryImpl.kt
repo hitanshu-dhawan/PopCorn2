@@ -1,9 +1,9 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.liveData
-import com.hitanshudhawan.popcorn2.database.GenresDao
-import com.hitanshudhawan.popcorn2.database.MovieGenreEntity
-import com.hitanshudhawan.popcorn2.database.TVShowGenreEntity
+import com.hitanshudhawan.popcorn2.database.cache.GenresDao
+import com.hitanshudhawan.popcorn2.database.cache.MovieGenreEntity
+import com.hitanshudhawan.popcorn2.database.cache.TVShowGenreEntity
 import com.hitanshudhawan.popcorn2.network.GenresService
 
 class GenresRepositoryImpl(

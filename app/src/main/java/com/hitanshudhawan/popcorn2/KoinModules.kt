@@ -1,7 +1,7 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.room.Room
-import com.hitanshudhawan.popcorn2.database.CacheDatabase
+import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
 import com.hitanshudhawan.popcorn2.network.GenresService
 import com.hitanshudhawan.popcorn2.network.MoviesService
@@ -30,7 +30,7 @@ val useCasesKoinModule = module {
 
 val repositoryKoinModule = module {
 
-    single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
     single<GenresRepository> { GenresRepositoryImpl(get(), get()) }
 
 }
@@ -45,7 +45,7 @@ val databaseKoinModule = module {
         ).build()
     }
 
-    //...
+    single { get<CacheDatabase>().moviesDao() }
     single { get<CacheDatabase>().genresDao() }
 
 }
