@@ -13,6 +13,7 @@ class GenresRepositoryImpl(
 
     // hitanshu : make something like NetworkBoundResource
     // or use libraries like Store : https://github.com/dropbox/Store
+    // hitanshu : wrong logic, not storing latest genres from network
     override fun getMovieGenres() = liveData<Resource<List<Genre>>> {
         emit(Resource.Loading())
         val genreEntities = genresDao.getMovieGenres()
@@ -31,6 +32,7 @@ class GenresRepositoryImpl(
 
     // hitanshu : make something like NetworkBoundResource
     // or use libraries like Store : https://github.com/dropbox/Store
+    // hitanshu : wrong logic, not storing latest genres from network
     override fun getTVShowGenres() = liveData<Resource<List<Genre>>> {
         emit(Resource.Loading())
         val genreEntities = genresDao.getTVShowGenres()
