@@ -2,6 +2,7 @@ package com.hitanshudhawan.popcorn2
 
 import androidx.room.Room
 import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
+import com.hitanshudhawan.popcorn2.database.favorite.FavoriteDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
 import com.hitanshudhawan.popcorn2.network.GenresService
 import com.hitanshudhawan.popcorn2.network.MoviesService
@@ -37,6 +38,19 @@ val repositoryKoinModule = module {
 
 val databaseKoinModule = module {
 
+    // Favorites
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            FavoriteDatabase::class.java,
+            FavoriteDatabase::class.java.simpleName
+        ).build()
+    }
+
+    single { get<FavoriteDatabase>().favoriteMoviesDao() }
+    single { get<FavoriteDatabase>().favoriteTVShowsDao() }
+
+    // Cache
     single {
         Room.databaseBuilder(
             androidContext(),
