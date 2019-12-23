@@ -14,24 +14,24 @@ fun List<MovieBriefJson>.mapToMovieBriefs(): List<MovieBrief> {
     return this.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
 }
 
-@JvmName("mapMovieBriefJsonsToNowPlayingMovieBriefEntities")
-fun List<MovieBriefJson>.mapToNowPlayingMovieBriefEntities(): List<NowPlayingMovieBriefEntity> {
-    return this.mapIndexed { index, it -> NowPlayingMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
+@JvmName("mapMovieBriefsToNowPlayingMovieBriefEntities")
+fun List<MovieBrief>.mapToNowPlayingMovieBriefEntities(): List<NowPlayingMovieBriefEntity> {
+    return this.mapIndexed { index, it -> NowPlayingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
-@JvmName("mapMovieBriefJsonsToPopularMovieBriefEntities")
-fun List<MovieBriefJson>.mapToPopularMovieBriefEntities(): List<PopularMovieBriefEntity> {
-    return this.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
+@JvmName("mapMovieBriefsToPopularMovieBriefEntities")
+fun List<MovieBrief>.mapToPopularMovieBriefEntities(): List<PopularMovieBriefEntity> {
+    return this.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
-@JvmName("mapMovieBriefJsonsToUpcomingMovieBriefEntities")
-fun List<MovieBriefJson>.mapToUpcomingMovieBriefEntities(): List<UpcomingMovieBriefEntity> {
-    return this.mapIndexed { index, it -> UpcomingMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
+@JvmName("mapMovieBriefsToUpcomingMovieBriefEntities")
+fun List<MovieBrief>.mapToUpcomingMovieBriefEntities(): List<UpcomingMovieBriefEntity> {
+    return this.mapIndexed { index, it -> UpcomingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
-@JvmName("mapMovieBriefJsonsToTopRatedMovieBriefEntities")
-fun List<MovieBriefJson>.mapToTopRatedMovieBriefEntities(): List<TopRatedMovieBriefEntity> {
-    return this.mapIndexed { index, it -> TopRatedMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
+@JvmName("mapMovieBriefsToTopRatedMovieBriefEntities")
+fun List<MovieBrief>.mapToTopRatedMovieBriefEntities(): List<TopRatedMovieBriefEntity> {
+    return this.mapIndexed { index, it -> TopRatedMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapNowPlayingMovieBriefEntitiesToMovieBriefs")

@@ -1,8 +1,6 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.liveData
 import com.hitanshudhawan.popcorn2.database.cache.MoviesDao
-import com.hitanshudhawan.popcorn2.database.cache.PopularMovieBriefEntity
 import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepositoryImpl(
@@ -10,21 +8,25 @@ class MoviesRepositoryImpl(
     private val moviesDao: MoviesDao
 ) : MoviesRepository {
 
-    override fun getNowPlayingMovies() = liveData<Resource<List<MovieBrief>>> {
-        emit(Resource.Loading())
-        val response = safe { moviesService.getNowPlayingMovies() }
-        if (response != null && response.isSuccessful) {
-            moviesDao.insertNowPlayingMovies(response.body()!!.results.mapToNowPlayingMovieBriefEntities())
-            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
-        } else {
-            val movieBriefEntities = moviesDao.getNowPlayingMovies()
-            if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
-            } else {
-                emit(Resource.Error())
-            }
+    override fun getNowPlayingMovies() = resource<List<MovieBrief>>(
+        network = {
+            val response = safe { moviesService.getNowPlayingMovies() }
+            if (response != null && response.isSuccessful)
+                Resource.Success(response.body()!!.results.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        database = {
+            val movieBriefEntities = safe { moviesDao.getNowPlayingMovies() }
+            if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+                Resource.Success(movieBriefEntities.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        save = {
+            moviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
         }
-    }
+    )
 
     override fun getPopularMovies() = resource<List<MovieBrief>>(
         network = {
@@ -42,40 +44,48 @@ class MoviesRepositoryImpl(
                 Resource.Error()
         },
         save = {
-            moviesDao.insertPopularMovies(it.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) })
+            moviesDao.insertPopularMovies(it.mapToPopularMovieBriefEntities())
         }
     )
 
-    override fun getUpcomingMovies() = liveData<Resource<List<MovieBrief>>> {
-        emit(Resource.Loading())
-        val response = safe { moviesService.getUpcomingMovies() }
-        if (response != null && response.isSuccessful) {
-            moviesDao.insertUpcomingMovies(response.body()!!.results.mapToUpcomingMovieBriefEntities())
-            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
-        } else {
-            val movieBriefEntities = moviesDao.getUpcomingMovies()
-            if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
-            } else {
-                emit(Resource.Error())
-            }
+    override fun getUpcomingMovies() = resource<List<MovieBrief>>(
+        network = {
+            val response = safe { moviesService.getUpcomingMovies() }
+            if (response != null && response.isSuccessful)
+                Resource.Success(response.body()!!.results.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        database = {
+            val movieBriefEntities = safe { moviesDao.getUpcomingMovies() }
+            if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+                Resource.Success(movieBriefEntities.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        save = {
+            moviesDao.insertUpcomingMovies(it.mapToUpcomingMovieBriefEntities())
         }
-    }
+    )
 
-    override fun getTopRatedMovies() = liveData<Resource<List<MovieBrief>>> {
-        emit(Resource.Loading())
-        val response = safe { moviesService.getTopRatedMovies() }
-        if (response != null && response.isSuccessful) {
-            moviesDao.insertTopRatedMovies(response.body()!!.results.mapToTopRatedMovieBriefEntities())
-            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
-        } else {
-            val movieBriefEntities = moviesDao.getTopRatedMovies()
-            if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
-            } else {
-                emit(Resource.Error())
-            }
+    override fun getTopRatedMovies() = resource<List<MovieBrief>>(
+        network = {
+            val response = safe { moviesService.getTopRatedMovies() }
+            if (response != null && response.isSuccessful)
+                Resource.Success(response.body()!!.results.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        database = {
+            val movieBriefEntities = safe { moviesDao.getTopRatedMovies() }
+            if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+                Resource.Success(movieBriefEntities.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        save = {
+            moviesDao.insertTopRatedMovies(it.mapToTopRatedMovieBriefEntities())
         }
-    }
+    )
 
 }
