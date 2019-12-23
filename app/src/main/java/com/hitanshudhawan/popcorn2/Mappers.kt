@@ -83,3 +83,5 @@ fun List<MovieGenreEntity>.mapToGenres(): List<Genre> {
 fun List<TVShowGenreEntity>.mapToGenres(): List<Genre> {
     return this.map { Genre(it.id, it.name) }
 }
+
+// hitanshu : this.mapIndexed where index in added as orderIndex will break when we use the api as paginated.
