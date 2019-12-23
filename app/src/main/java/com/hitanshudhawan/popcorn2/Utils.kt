@@ -3,6 +3,7 @@ package com.hitanshudhawan.popcorn2
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.liveData
 
 // hitanshu : use kotlin libraries available for this
 fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
@@ -159,4 +160,18 @@ suspend fun <T> safe(call: suspend () -> T): T? {
     } catch (e: Exception) {
         null
     }
+}
+
+fun <T> resource(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit) = liveData {
+
+    emit(Resource.Loading())
+
+    val resource = network()
+    if (resource is Resource.Success) {
+        emit(resource)
+        save(resource.data)
+    } else {
+        emit(database())
+    }
+
 }

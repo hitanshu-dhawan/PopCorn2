@@ -2,6 +2,7 @@ package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.liveData
 import com.hitanshudhawan.popcorn2.database.cache.MoviesDao
+import com.hitanshudhawan.popcorn2.database.cache.PopularMovieBriefEntity
 import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepositoryImpl(
@@ -25,21 +26,25 @@ class MoviesRepositoryImpl(
         }
     }
 
-    override fun getPopularMovies() = liveData<Resource<List<MovieBrief>>> {
-        emit(Resource.Loading())
-        val response = safe { moviesService.getPopularMovies() }
-        if (response != null && response.isSuccessful) {
-            moviesDao.insertPopularMovies(response.body()!!.results.mapToPopularMovieBriefEntities())
-            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
-        } else {
-            val movieBriefEntities = moviesDao.getPopularMovies()
-            if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
-            } else {
-                emit(Resource.Error())
-            }
+    override fun getPopularMovies() = resource<List<MovieBrief>>(
+        network = {
+            val response = safe { moviesService.getPopularMovies() }
+            if (response != null && response.isSuccessful)
+                Resource.Success(response.body()!!.results.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        database = {
+            val movieBriefEntities = safe { moviesDao.getPopularMovies() }
+            if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+                Resource.Success(movieBriefEntities.mapToMovieBriefs())
+            else
+                Resource.Error()
+        },
+        save = {
+            moviesDao.insertPopularMovies(it.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) })
         }
-    }
+    )
 
     override fun getUpcomingMovies() = liveData<Resource<List<MovieBrief>>> {
         emit(Resource.Loading())
