@@ -64,13 +64,13 @@ fun List<GenreJson>.mapToGenres(): List<Genre> {
     return this.map { Genre(it.id, it.name) }
 }
 
-@JvmName("mapGenreJsonsToMovieGenreEntities")
-fun List<GenreJson>.mapToMovieGenreEntities(): List<MovieGenreEntity> {
+@JvmName("mapGenresToMovieGenreEntities")
+fun List<Genre>.mapToMovieGenreEntities(): List<MovieGenreEntity> {
     return this.mapIndexed { index, it -> MovieGenreEntity(index, it.id, it.name) }
 }
 
-@JvmName("mapGenreJsonsToTVShowGenreEntities")
-fun List<GenreJson>.mapToTVShowGenreEntities(): List<TVShowGenreEntity> {
+@JvmName("mapGenresToTVShowGenreEntities")
+fun List<Genre>.mapToTVShowGenreEntities(): List<TVShowGenreEntity> {
     return this.mapIndexed { index, it -> TVShowGenreEntity(index, it.id, it.name) }
 }
 
