@@ -1,7 +1,7 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.liveData
-import com.hitanshudhawan.popcorn2.database.cache.*
+import com.hitanshudhawan.popcorn2.database.cache.MoviesDao
 import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepositoryImpl(
@@ -13,12 +13,12 @@ class MoviesRepositoryImpl(
         emit(Resource.Loading())
         val response = safe { moviesService.getNowPlayingMovies() }
         if (response != null && response.isSuccessful) {
-            moviesDao.insertNowPlayingMovies(response.body()!!.results.mapIndexed { index, it -> NowPlayingMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
-            emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
+            moviesDao.insertNowPlayingMovies(response.body()!!.results.mapToNowPlayingMovieBriefEntities())
+            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
         } else {
             val movieBriefEntities = moviesDao.getNowPlayingMovies()
             if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }))
+                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
             } else {
                 emit(Resource.Error())
             }
@@ -29,12 +29,12 @@ class MoviesRepositoryImpl(
         emit(Resource.Loading())
         val response = safe { moviesService.getPopularMovies() }
         if (response != null && response.isSuccessful) {
-            moviesDao.insertPopularMovies(response.body()!!.results.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
-            emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
+            moviesDao.insertPopularMovies(response.body()!!.results.mapToPopularMovieBriefEntities())
+            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
         } else {
             val movieBriefEntities = moviesDao.getPopularMovies()
             if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }))
+                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
             } else {
                 emit(Resource.Error())
             }
@@ -45,12 +45,12 @@ class MoviesRepositoryImpl(
         emit(Resource.Loading())
         val response = safe { moviesService.getUpcomingMovies() }
         if (response != null && response.isSuccessful) {
-            moviesDao.insertUpcomingMovies(response.body()!!.results.mapIndexed { index, it -> UpcomingMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
-            emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
+            moviesDao.insertUpcomingMovies(response.body()!!.results.mapToUpcomingMovieBriefEntities())
+            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
         } else {
             val movieBriefEntities = moviesDao.getUpcomingMovies()
             if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }))
+                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
             } else {
                 emit(Resource.Error())
             }
@@ -61,12 +61,12 @@ class MoviesRepositoryImpl(
         emit(Resource.Loading())
         val response = safe { moviesService.getTopRatedMovies() }
         if (response != null && response.isSuccessful) {
-            moviesDao.insertTopRatedMovies(response.body()!!.results.mapIndexed { index, it -> TopRatedMovieBriefEntity(index, it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) })
-            emit(Resource.Success(response.body()!!.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }))
+            moviesDao.insertTopRatedMovies(response.body()!!.results.mapToTopRatedMovieBriefEntities())
+            emit(Resource.Success(response.body()!!.results.mapToMovieBriefs()))
         } else {
             val movieBriefEntities = moviesDao.getTopRatedMovies()
             if (movieBriefEntities.isNotEmpty()) {
-                emit(Resource.Success(movieBriefEntities.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }))
+                emit(Resource.Success(movieBriefEntities.mapToMovieBriefs()))
             } else {
                 emit(Resource.Error())
             }
