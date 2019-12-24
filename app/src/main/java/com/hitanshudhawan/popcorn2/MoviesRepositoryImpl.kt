@@ -1,11 +1,11 @@
 package com.hitanshudhawan.popcorn2
 
-import com.hitanshudhawan.popcorn2.database.cache.MoviesDao
+import com.hitanshudhawan.popcorn2.database.cache.CacheMoviesDao
 import com.hitanshudhawan.popcorn2.network.MoviesService
 
 class MoviesRepositoryImpl(
     private val moviesService: MoviesService,
-    private val moviesDao: MoviesDao
+    private val cacheMoviesDao: CacheMoviesDao
 ) : MoviesRepository {
 
     override fun getNowPlayingMovies() = resource<List<MovieBrief>>(
@@ -17,14 +17,14 @@ class MoviesRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val movieBriefEntities = safe { moviesDao.getNowPlayingMovies() }
+            val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies() }
             if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                 Resource.Success(movieBriefEntities.mapToMovieBriefs())
             else
                 Resource.Error()
         },
         save = {
-            moviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
+            cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
         }
     )
 
@@ -37,14 +37,14 @@ class MoviesRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val movieBriefEntities = safe { moviesDao.getPopularMovies() }
+            val movieBriefEntities = safe { cacheMoviesDao.getPopularMovies() }
             if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                 Resource.Success(movieBriefEntities.mapToMovieBriefs())
             else
                 Resource.Error()
         },
         save = {
-            moviesDao.insertPopularMovies(it.mapToPopularMovieBriefEntities())
+            cacheMoviesDao.insertPopularMovies(it.mapToPopularMovieBriefEntities())
         }
     )
 
@@ -57,14 +57,14 @@ class MoviesRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val movieBriefEntities = safe { moviesDao.getUpcomingMovies() }
+            val movieBriefEntities = safe { cacheMoviesDao.getUpcomingMovies() }
             if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                 Resource.Success(movieBriefEntities.mapToMovieBriefs())
             else
                 Resource.Error()
         },
         save = {
-            moviesDao.insertUpcomingMovies(it.mapToUpcomingMovieBriefEntities())
+            cacheMoviesDao.insertUpcomingMovies(it.mapToUpcomingMovieBriefEntities())
         }
     )
 
@@ -77,14 +77,14 @@ class MoviesRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val movieBriefEntities = safe { moviesDao.getTopRatedMovies() }
+            val movieBriefEntities = safe { cacheMoviesDao.getTopRatedMovies() }
             if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                 Resource.Success(movieBriefEntities.mapToMovieBriefs())
             else
                 Resource.Error()
         },
         save = {
-            moviesDao.insertTopRatedMovies(it.mapToTopRatedMovieBriefEntities())
+            cacheMoviesDao.insertTopRatedMovies(it.mapToTopRatedMovieBriefEntities())
         }
     )
 

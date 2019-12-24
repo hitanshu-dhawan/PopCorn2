@@ -1,11 +1,11 @@
 package com.hitanshudhawan.popcorn2
 
-import com.hitanshudhawan.popcorn2.database.cache.GenresDao
+import com.hitanshudhawan.popcorn2.database.cache.CacheGenresDao
 import com.hitanshudhawan.popcorn2.network.GenresService
 
 class GenresRepositoryImpl(
     private val genresService: GenresService,
-    private val genresDao: GenresDao
+    private val cacheGenresDao: CacheGenresDao
 ) : GenresRepository {
 
     override fun getMovieGenres() = resource<List<Genre>>(
@@ -17,14 +17,14 @@ class GenresRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val genreEntities = safe { genresDao.getMovieGenres() }
+            val genreEntities = safe { cacheGenresDao.getMovieGenres() }
             if (genreEntities != null && genreEntities.isNotEmpty())
                 Resource.Success(genreEntities.mapToGenres())
             else
                 Resource.Error()
         },
         save = {
-            genresDao.insertMovieGenres(it.mapToMovieGenreEntities())
+            cacheGenresDao.insertMovieGenres(it.mapToMovieGenreEntities())
         }
     )
 
@@ -37,14 +37,14 @@ class GenresRepositoryImpl(
                 Resource.Error()
         },
         database = {
-            val genreEntities = safe { genresDao.getTVShowGenres() }
+            val genreEntities = safe { cacheGenresDao.getTVShowGenres() }
             if (genreEntities != null && genreEntities.isNotEmpty())
                 Resource.Success(genreEntities.mapToGenres())
             else
                 Resource.Error()
         },
         save = {
-            genresDao.insertTVShowGenres(it.mapToTVShowGenreEntities())
+            cacheGenresDao.insertTVShowGenres(it.mapToTVShowGenreEntities())
         }
     )
 

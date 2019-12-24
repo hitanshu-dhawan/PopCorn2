@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class PopularMovieBriefEntity(
+data class CachePopularMovieBriefEntity(
     @PrimaryKey
     val orderIndex: Int,
     val id: Int,

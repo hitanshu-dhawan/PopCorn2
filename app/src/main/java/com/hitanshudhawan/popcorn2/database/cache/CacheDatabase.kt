@@ -7,20 +7,20 @@ import com.hitanshudhawan.popcorn2.database.RoomTypeConverters
 
 @Database(
     entities = [
-        NowPlayingMovieBriefEntity::class,
-        PopularMovieBriefEntity::class,
-        UpcomingMovieBriefEntity::class,
-        TopRatedMovieBriefEntity::class,
-        MovieGenreEntity::class,
-        TVShowGenreEntity::class
+        CacheNowPlayingMovieBriefEntity::class,
+        CachePopularMovieBriefEntity::class,
+        CacheUpcomingMovieBriefEntity::class,
+        CacheTopRatedMovieBriefEntity::class,
+        CacheMovieGenreEntity::class,
+        CacheTVShowGenreEntity::class
     ],
     version = 1
 )
 @TypeConverters(RoomTypeConverters::class)
 abstract class CacheDatabase : RoomDatabase() {
 
-    abstract fun moviesDao(): MoviesDao
+    abstract fun moviesDao(): CacheMoviesDao
 
-    abstract fun genresDao(): GenresDao
+    abstract fun genresDao(): CacheGenresDao
 
 }

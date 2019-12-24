@@ -4,10 +4,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class MovieGenreEntity(
+data class CacheUpcomingMovieBriefEntity(
     @PrimaryKey
     val orderIndex: Int,
     val id: Int,
-    val name: String
+    val title: String,
+    val poster: String?,
+    val backdrop: String?,
+    val rating: Double,
+    val genreIds: List<Int>
 )
-

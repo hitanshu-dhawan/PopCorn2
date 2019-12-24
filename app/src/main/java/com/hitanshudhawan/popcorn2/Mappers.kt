@@ -15,42 +15,42 @@ fun List<MovieBriefJson>.mapToMovieBriefs(): List<MovieBrief> {
 }
 
 @JvmName("mapMovieBriefsToNowPlayingMovieBriefEntities")
-fun List<MovieBrief>.mapToNowPlayingMovieBriefEntities(): List<NowPlayingMovieBriefEntity> {
-    return this.mapIndexed { index, it -> NowPlayingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
+fun List<MovieBrief>.mapToNowPlayingMovieBriefEntities(): List<CacheNowPlayingMovieBriefEntity> {
+    return this.mapIndexed { index, it -> CacheNowPlayingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapMovieBriefsToPopularMovieBriefEntities")
-fun List<MovieBrief>.mapToPopularMovieBriefEntities(): List<PopularMovieBriefEntity> {
-    return this.mapIndexed { index, it -> PopularMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
+fun List<MovieBrief>.mapToPopularMovieBriefEntities(): List<CachePopularMovieBriefEntity> {
+    return this.mapIndexed { index, it -> CachePopularMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapMovieBriefsToUpcomingMovieBriefEntities")
-fun List<MovieBrief>.mapToUpcomingMovieBriefEntities(): List<UpcomingMovieBriefEntity> {
-    return this.mapIndexed { index, it -> UpcomingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
+fun List<MovieBrief>.mapToUpcomingMovieBriefEntities(): List<CacheUpcomingMovieBriefEntity> {
+    return this.mapIndexed { index, it -> CacheUpcomingMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapMovieBriefsToTopRatedMovieBriefEntities")
-fun List<MovieBrief>.mapToTopRatedMovieBriefEntities(): List<TopRatedMovieBriefEntity> {
-    return this.mapIndexed { index, it -> TopRatedMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
+fun List<MovieBrief>.mapToTopRatedMovieBriefEntities(): List<CacheTopRatedMovieBriefEntity> {
+    return this.mapIndexed { index, it -> CacheTopRatedMovieBriefEntity(index, it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapNowPlayingMovieBriefEntitiesToMovieBriefs")
-fun List<NowPlayingMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
+fun List<CacheNowPlayingMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
     return this.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapPopularMovieBriefEntitiesToMovieBriefs")
-fun List<PopularMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
+fun List<CachePopularMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
     return this.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapUpcomingMovieBriefEntitiesToMovieBriefs")
-fun List<UpcomingMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
+fun List<CacheUpcomingMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
     return this.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
 @JvmName("mapTopRatedMovieBriefEntitiesToMovieBriefs")
-fun List<TopRatedMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
+fun List<CacheTopRatedMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
     return this.map { MovieBrief(it.id, it.title, it.poster, it.backdrop, it.rating, it.genreIds) }
 }
 
@@ -65,22 +65,22 @@ fun List<GenreJson>.mapToGenres(): List<Genre> {
 }
 
 @JvmName("mapGenresToMovieGenreEntities")
-fun List<Genre>.mapToMovieGenreEntities(): List<MovieGenreEntity> {
-    return this.mapIndexed { index, it -> MovieGenreEntity(index, it.id, it.name) }
+fun List<Genre>.mapToMovieGenreEntities(): List<CacheMovieGenreEntity> {
+    return this.mapIndexed { index, it -> CacheMovieGenreEntity(index, it.id, it.name) }
 }
 
 @JvmName("mapGenresToTVShowGenreEntities")
-fun List<Genre>.mapToTVShowGenreEntities(): List<TVShowGenreEntity> {
-    return this.mapIndexed { index, it -> TVShowGenreEntity(index, it.id, it.name) }
+fun List<Genre>.mapToTVShowGenreEntities(): List<CacheTVShowGenreEntity> {
+    return this.mapIndexed { index, it -> CacheTVShowGenreEntity(index, it.id, it.name) }
 }
 
 @JvmName("mapMovieGenreEntitiesToGenres")
-fun List<MovieGenreEntity>.mapToGenres(): List<Genre> {
+fun List<CacheMovieGenreEntity>.mapToGenres(): List<Genre> {
     return this.map { Genre(it.id, it.name) }
 }
 
 @JvmName("mapTVShowGenreEntitiesToGenres")
-fun List<TVShowGenreEntity>.mapToGenres(): List<Genre> {
+fun List<CacheTVShowGenreEntity>.mapToGenres(): List<Genre> {
     return this.map { Genre(it.id, it.name) }
 }
 
