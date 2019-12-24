@@ -42,13 +42,13 @@ class MoviesFragment : Fragment() {
                         }
                         addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
-                            withDataSource(dataSourceTypedOf(it.nowPlayingMovies.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
-                            withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
+                            withDataSource(dataSourceTypedOf(it.nowPlayingMovies))
+                            withItem<ShowData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                                 onBind(::ShowBannerViewHolder) { index, item ->
                                     backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
-                                    genres.text = item.genres.joinToString()
+                                    genres.text = item.genres.joinToString { it.second }
                                     favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
@@ -63,8 +63,8 @@ class MoviesFragment : Fragment() {
                         }
                         addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
-                            withDataSource(dataSourceTypedOf(it.popularMovies.map { ShowCardData(it.poster ?: "", it.title) }))
-                            withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
+                            withDataSource(dataSourceTypedOf(it.popularMovies))
+                            withItem<ShowData, ShowCardViewHolder>(R.layout.item_show_card) {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
@@ -82,13 +82,13 @@ class MoviesFragment : Fragment() {
                         }
                         addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
-                            withDataSource(dataSourceTypedOf(it.upcomingMovies.map { ShowBannerData(it.backdrop ?: "", it.title, it.rating, it.genres) }))
-                            withItem<ShowBannerData, ShowBannerViewHolder>(R.layout.item_show_banner) {
+                            withDataSource(dataSourceTypedOf(it.upcomingMovies))
+                            withItem<ShowData, ShowBannerViewHolder>(R.layout.item_show_banner) {
                                 onBind(::ShowBannerViewHolder) { index, item ->
                                     backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
-                                    genres.text = item.genres.joinToString()
+                                    genres.text = item.genres.joinToString { it.second }
                                     favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
@@ -103,8 +103,8 @@ class MoviesFragment : Fragment() {
                         }
                         addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
                         setup {
-                            withDataSource(dataSourceTypedOf(it.topRatedMovies.map { ShowCardData(it.poster ?: "", it.title) }))
-                            withItem<ShowCardData, ShowCardViewHolder>(R.layout.item_show_card) {
+                            withDataSource(dataSourceTypedOf(it.topRatedMovies))
+                            withItem<ShowData, ShowCardViewHolder>(R.layout.item_show_card) {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title

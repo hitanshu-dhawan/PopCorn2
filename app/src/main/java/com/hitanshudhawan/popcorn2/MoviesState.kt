@@ -4,10 +4,10 @@ package com.hitanshudhawan.popcorn2
 sealed class MoviesState {
 
     class Success(
-        val nowPlayingMovies: List<ShowBannerData>,
-        val popularMovies: List<ShowCardData>,
-        val upcomingMovies: List<ShowBannerData>,
-        val topRatedMovies: List<ShowCardData>
+        val nowPlayingMovies: List<ShowData>,
+        val popularMovies: List<ShowData>,
+        val upcomingMovies: List<ShowData>,
+        val topRatedMovies: List<ShowData>
     ) : MoviesState()
 
     object Error : MoviesState()

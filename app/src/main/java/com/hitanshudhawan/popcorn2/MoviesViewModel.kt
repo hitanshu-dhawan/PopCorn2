@@ -18,10 +18,10 @@ class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() 
     }
 
     private fun getMoviesState(
-        nowPlayingMovieBriefs: Resource<List<ShowBannerData>>,
-        popularMovieBriefs: Resource<List<ShowCardData>>,
-        upcomingMovieBriefs: Resource<List<ShowBannerData>>,
-        topRatedMovieBriefs: Resource<List<ShowCardData>>
+        nowPlayingMovieBriefs: Resource<List<ShowData>>,
+        popularMovieBriefs: Resource<List<ShowData>>,
+        upcomingMovieBriefs: Resource<List<ShowData>>,
+        topRatedMovieBriefs: Resource<List<ShowData>>
     ): MoviesState {
         if (nowPlayingMovieBriefs is Resource.Success && popularMovieBriefs is Resource.Success && upcomingMovieBriefs is Resource.Success && topRatedMovieBriefs is Resource.Success)
             return MoviesState.Success(nowPlayingMovieBriefs.data, popularMovieBriefs.data, upcomingMovieBriefs.data, topRatedMovieBriefs.data)

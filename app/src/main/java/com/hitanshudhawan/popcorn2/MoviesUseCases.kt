@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 
 interface MoviesUseCases {
 
-    fun getNowPlayingMovies(): LiveData<Resource<List<ShowBannerData>>>
+    fun getNowPlayingMovies(): LiveData<Resource<List<ShowData>>>
 
-    fun getPopularMovies(): LiveData<Resource<List<ShowCardData>>>
+    fun getPopularMovies(): LiveData<Resource<List<ShowData>>>
 
-    fun getUpcomingMovies(): LiveData<Resource<List<ShowBannerData>>>
+    fun getUpcomingMovies(): LiveData<Resource<List<ShowData>>>
 
-    fun getTopRatedMovies(): LiveData<Resource<List<ShowCardData>>>
+    fun getTopRatedMovies(): LiveData<Resource<List<ShowData>>>
 
 }
