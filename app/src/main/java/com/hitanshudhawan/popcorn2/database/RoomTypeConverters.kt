@@ -1,8 +1,8 @@
-package com.hitanshudhawan.popcorn2.database.cache
+package com.hitanshudhawan.popcorn2.database
 
 import androidx.room.TypeConverter
 
-class CacheTypeConverters {
+class RoomTypeConverters {
 
     @TypeConverter
     fun fromListOfInt(value: List<Int>): String = value.joinToString(",")

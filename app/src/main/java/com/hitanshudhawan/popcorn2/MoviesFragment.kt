@@ -49,7 +49,7 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString()
-                                    //...
+                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
                         }
@@ -68,7 +68,7 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    //...
+                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
                         }
@@ -89,7 +89,7 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString()
-                                    //...
+                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
                         }
@@ -108,7 +108,7 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    //...
+                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
                                 }
                             }
                         }
