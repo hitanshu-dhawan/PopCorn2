@@ -162,7 +162,11 @@ suspend fun <T> safe(call: suspend () -> T): T? {
     }
 }
 
-fun <T> resource(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit) = liveData {
+fun <T> resource(
+    network: suspend () -> Resource<T> = { Resource.Error() },
+    database: suspend () -> Resource<T> = { Resource.Error() },
+    save: suspend (T) -> Unit = {}
+) = liveData {
 
     emit(Resource.Loading())
 

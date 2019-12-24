@@ -1,6 +1,8 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() {
 
@@ -28,6 +30,12 @@ class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() 
         if (nowPlayingMovieBriefs is Resource.Error || popularMovieBriefs is Resource.Error || upcomingMovieBriefs is Resource.Error || topRatedMovieBriefs is Resource.Error)
             return MoviesState.Error
         return MoviesState.Loading
+    }
+
+    fun isFavoriteMovie(id: Int) = moviesUseCases.isFavoriteMovie(id)
+
+    fun toggleFavoriteMovie(showData: ShowData) {
+        viewModelScope.launch { moviesUseCases.toggleFavoriteMovie(showData) }
     }
 
 }

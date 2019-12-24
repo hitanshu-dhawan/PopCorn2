@@ -84,5 +84,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.2.3")
     testImplementation("androidx.room:room-testing:2.2.3")
 
+    implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+
     testImplementation("junit:junit:4.12")
 }

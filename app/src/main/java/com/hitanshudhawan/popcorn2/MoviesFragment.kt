@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.afollestad.recyclical.datasource.dataSourceTypedOf
+import com.afollestad.recyclical.itemdefinition.onChildViewClick
 import com.afollestad.recyclical.setup
 import com.afollestad.recyclical.withItem
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -49,7 +50,12 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString { it.second }
-                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
                                 }
                             }
                         }
@@ -68,7 +74,12 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
                                 }
                             }
                         }
@@ -89,7 +100,12 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString { it.second }
-                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
                                 }
                             }
                         }
@@ -108,7 +124,12 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    favorite.setImageResource(R.mipmap.ic_favorite_border_black_18dp)
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
                                 }
                             }
                         }

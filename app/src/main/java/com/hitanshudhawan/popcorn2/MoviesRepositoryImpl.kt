@@ -1,11 +1,17 @@
 package com.hitanshudhawan.popcorn2
 
+import androidx.lifecycle.map
 import com.hitanshudhawan.popcorn2.database.cache.CacheMoviesDao
+import com.hitanshudhawan.popcorn2.database.favorite.FavoriteMovieBriefEntity
+import com.hitanshudhawan.popcorn2.database.favorite.FavoriteMoviesDao
 import com.hitanshudhawan.popcorn2.network.MoviesService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MoviesRepositoryImpl(
     private val moviesService: MoviesService,
-    private val cacheMoviesDao: CacheMoviesDao
+    private val cacheMoviesDao: CacheMoviesDao,
+    private val favoriteMoviesDao: FavoriteMoviesDao
 ) : MoviesRepository {
 
     override fun getNowPlayingMovies() = resource<List<MovieBrief>>(
@@ -87,5 +93,13 @@ class MoviesRepositoryImpl(
             cacheMoviesDao.insertTopRatedMovies(it.mapToTopRatedMovieBriefEntities())
         }
     )
+
+    override fun isFavoriteMovie(id: Int) = favoriteMoviesDao.getFavoriteMovieLiveData(id).map { it != null }
+
+    override suspend fun toggleFavoriteMovie(movieBrief: MovieBrief) {
+        withContext(Dispatchers.IO) {
+            safe { favoriteMoviesDao.toggleFavoriteMovie(FavoriteMovieBriefEntity(0, movieBrief.id, movieBrief.title, movieBrief.poster, movieBrief.backdrop, movieBrief.rating, movieBrief.genreIds)) }
+        }
+    }
 
 }

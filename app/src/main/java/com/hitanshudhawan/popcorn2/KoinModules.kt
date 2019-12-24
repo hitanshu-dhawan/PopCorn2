@@ -31,7 +31,7 @@ val useCasesKoinModule = module {
 
 val repositoryKoinModule = module {
 
-    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl(get(), get(), get()) }
     single<GenresRepository> { GenresRepositoryImpl(get(), get()) }
 
 }

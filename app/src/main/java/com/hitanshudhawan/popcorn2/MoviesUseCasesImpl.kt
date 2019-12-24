@@ -39,4 +39,10 @@ class MoviesUseCasesImpl(
         return Resource.Loading()
     }
 
+    override fun isFavoriteMovie(id: Int) = moviesRepository.isFavoriteMovie(id)
+
+    override suspend fun toggleFavoriteMovie(showData: ShowData) {
+        moviesRepository.toggleFavoriteMovie(MovieBrief(showData.id, showData.title, showData.poster, showData.backdrop, showData.rating, showData.genres.map { it.first }))
+    }
+
 }
