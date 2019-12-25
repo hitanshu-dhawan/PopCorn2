@@ -9,17 +9,60 @@
         android:id="@+id/movies_destination"
         android:name="com.hitanshudhawan.popcorn2.MoviesFragment"
         android:label="@string/movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies">
+
+        <action
+            android:id="@+id/action_movies_destination_to_view_all_movies_destination"
+            app:destination="@id/view_all_movies_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/tv_shows_destination"
         android:name="com.hitanshudhawan.popcorn2.TVShowsFragment"
         android:label="@string/tv_shows"
-        tools:layout="@layout/fragment_tv_shows" />
+        tools:layout="@layout/fragment_tv_shows">
+
+        <action
+            android:id="@+id/action_tv_shows_destination_to_view_all_tv_shows_destination"
+            app:destination="@id/view_all_tv_shows_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/favorites_destination"
         android:name="com.hitanshudhawan.popcorn2.FavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/view_all_movies_destination"
+        android:name="com.hitanshudhawan.popcorn2.ViewAllMoviesFragment"
+        tools:layout="@layout/fragment_view_all_movies">
+
+        <argument
+            android:name="moviesType"
+            app:argType="com.hitanshudhawan.popcorn2.ViewAllMoviesFragment$MoviesType" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/view_all_tv_shows_destination"
+        android:name="com.hitanshudhawan.popcorn2.ViewAllTVShowsFragment"
+        tools:layout="@layout/fragment_view_all_tv_shows">
+
+        <argument
+            android:name="tvShowsType"
+            app:argType="com.hitanshudhawan.popcorn2.ViewAllTVShowsFragment$TVShowsType" />
+
+    </fragment>
+
 </navigation>

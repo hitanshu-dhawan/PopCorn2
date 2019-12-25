@@ -103,3 +103,5 @@ class MoviesRepositoryImpl(
     }
 
 }
+
+// hitanshu : You can use strategy pattern for all 4 types of movies.

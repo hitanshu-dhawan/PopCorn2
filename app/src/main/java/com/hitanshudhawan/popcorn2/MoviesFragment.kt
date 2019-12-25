@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
@@ -60,6 +61,10 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
+                    now_playing_view_all_text_view.setOnClickListener {
+                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.NOW_PLAYING))
+                    }
+
                     popular_recycler_view.apply {
                         layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
                             override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
@@ -84,6 +89,10 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
+                    popular_view_all_text_view.setOnClickListener {
+                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.POPULAR))
+                    }
+
                     upcoming_recycler_view.apply {
                         layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
                             override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
@@ -110,6 +119,10 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
+                    upcoming_view_all_text_view.setOnClickListener {
+                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.UPCOMING))
+                    }
+
                     top_rated_recycler_view.apply {
                         layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
                             override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
@@ -134,6 +147,10 @@ class MoviesFragment : Fragment() {
                             }
                         }
                     }
+                    top_rated_view_all_text_view.setOnClickListener {
+                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.TOP_RATED))
+                    }
+
                 }
                 is MoviesState.Error -> {
                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
