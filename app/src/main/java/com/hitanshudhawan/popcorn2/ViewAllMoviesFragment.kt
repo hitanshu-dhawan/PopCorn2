@@ -31,3 +31,8 @@ class ViewAllMoviesFragment : Fragment() {
 }
 
 // hitanshu : when pressing back from ViewAllMoviesFragment, MoviesFragment is created again! Find an elegant solution for this.
+
+// hitanshu : Christmas : todo
+// 1. Swipe to Refresh for MoviesFragment
+// 2. Paging for ViewAllMoviesFragment with network and database both
+// 3. Custom caching strategy for GenresRepository
