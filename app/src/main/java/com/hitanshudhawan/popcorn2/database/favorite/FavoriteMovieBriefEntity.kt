@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class FavoriteMovieBriefEntity(
     @PrimaryKey(autoGenerate = true)
-    val orderIndex: Int,
+    val __id: Int,
     val id: Int,
     val title: String,
     val poster: String?,

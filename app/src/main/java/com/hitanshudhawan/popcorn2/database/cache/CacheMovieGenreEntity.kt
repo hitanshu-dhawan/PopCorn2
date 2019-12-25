@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class CacheMovieGenreEntity(
-    @PrimaryKey
-    val orderIndex: Int,
+    @PrimaryKey(autoGenerate = true)
+    val __id: Int,
     val id: Int,
     val name: String
 )
-

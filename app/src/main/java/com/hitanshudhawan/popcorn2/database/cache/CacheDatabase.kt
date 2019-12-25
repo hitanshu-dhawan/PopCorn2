@@ -24,3 +24,5 @@ abstract class CacheDatabase : RoomDatabase() {
     abstract fun genresDao(): CacheGenresDao
 
 }
+
+// hitanshu : always items are inserted into the DB, which create a LOT of entries in the DB, look into it.
