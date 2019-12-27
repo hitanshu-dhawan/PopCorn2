@@ -1,5 +1,6 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.network
 
+import com.hitanshudhawan.popcorn2.data.GenresResponse
 import retrofit2.http.GET
 
 interface GenresService {

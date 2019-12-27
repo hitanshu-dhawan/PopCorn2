@@ -1,13 +1,13 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.data
 
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class MoviesResponse(
-    val page: Int,
-    val results: List<MovieBrief>,
-    val total_pages: Int,
-    val total_results: Int
+	val page: Int,
+	val results: List<MovieBrief>,
+	val total_pages: Int,
+	val total_results: Int
 )
 
 @JsonClass(generateAdapter = true)

@@ -1,4 +1,4 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.data
 
 import com.squareup.moshi.JsonClass
 
