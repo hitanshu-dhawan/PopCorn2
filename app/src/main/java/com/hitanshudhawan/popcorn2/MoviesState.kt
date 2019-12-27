@@ -1,6 +1,6 @@
 package com.hitanshudhawan.popcorn2
 
-// hitanshu : make a base class UIState
+// hitanshu : make a base class UIState | or use Resource.kt
 sealed class MoviesState {
 
     class Success(

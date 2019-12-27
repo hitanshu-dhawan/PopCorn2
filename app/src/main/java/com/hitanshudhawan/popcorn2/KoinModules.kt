@@ -1,5 +1,6 @@
 package com.hitanshudhawan.popcorn2
 
+import androidx.paging.PagedList
 import androidx.room.Room
 import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
 import com.hitanshudhawan.popcorn2.database.favorite.FavoriteDatabase
@@ -93,4 +94,66 @@ val networkKoinModule = module {
     single { get<Retrofit>().create(TVShowsService::class.java) }
     single { get<Retrofit>().create(GenresService::class.java) }
 
+}
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+val extraKoinModule = module {
+    single { ViewAllMoviesDataSource(get()) }
+    single { ViewAllMoviesDataSourceFactory(get()) }
+    single {
+        PagedList.Config.Builder()
+            .setPageSize(20)
+            .setInitialLoadSizeHint(5)
+            .setPrefetchDistance(10)
+            .setEnablePlaceholders(false)
+            .build()
+    }
+    single { ViewAllMoviesViewModel(get(), get()) }
 }

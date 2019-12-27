@@ -88,5 +88,7 @@ dependencies {
 
     implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
 
+    implementation("androidx.paging:paging-runtime-ktx:2.1.1")
+
     testImplementation("junit:junit:4.12")
 }
