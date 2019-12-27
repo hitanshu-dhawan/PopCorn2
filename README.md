@@ -7,6 +7,8 @@ PopCorn2
 
 PopCorn2 is an attempt to re-write the actual [PopCorn](https://github.com/hitanshu-dhawan/PopCorn) app with a clean articheture and with latest 2019 tech stack.
 
+## :warning::warning: Currently under heavy development :warning::warning:
+
 ### Tech stack
 - [x] AndroidX
 - [x] Kotlin Coroutines
