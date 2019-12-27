@@ -1,6 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import java.util.Properties
-import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
@@ -10,10 +8,6 @@ plugins {
 
     id("jacoco-android")
 }
-
-val apikeyPropertiesFile = rootProject.file("apikey.properties")
-val apikeyProperties = Properties()
-apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdkVersion(29)
@@ -34,7 +28,7 @@ android {
 
     buildTypes {
         getByName("debug") {
-            buildConfigField("String", "API_KEY", apikeyProperties["MOVIE_DB_API_KEY"] as String)
+            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
             signingConfig = signingConfigs.getByName("debug")
         }
     }

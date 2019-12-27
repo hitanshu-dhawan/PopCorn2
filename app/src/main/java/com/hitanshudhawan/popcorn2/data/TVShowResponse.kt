@@ -21,5 +21,5 @@ data class TVShowResponse(
 
 @JsonClass(generateAdapter = true)
 data class Network(
-    val name: String
+	val name: String
 )
