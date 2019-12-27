@@ -7,18 +7,16 @@ import org.koin.core.context.startKoin
 
 class PopCorn2Application : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
+	override fun onCreate() {
+		super.onCreate()
 
-        startKoin {
-            androidContext(this@PopCorn2Application)
-            modules(
-                listOf(
+		startKoin {
+			androidContext(this@PopCorn2Application)
+			modules(
+				listOf(
 					networkKoinModule
-                )
-            )
-        }
-
-    }
-
+				)
+			)
+		}
+	}
 }
