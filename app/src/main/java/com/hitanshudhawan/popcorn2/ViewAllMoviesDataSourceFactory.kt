@@ -16,3 +16,8 @@ class ViewAllMoviesDataSourceFactory(
     }
 
 }
+
+// hitanshu : 29th December 2019 : todo - for ViewAllMovies
+// 1. Have initial state and paginated state as LiveData
+// 2. Add favorites feature
+// 3. Look into solution for multiple (4) types of data sources for pagination
