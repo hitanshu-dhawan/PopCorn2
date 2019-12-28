@@ -42,7 +42,8 @@ class MoviesUseCasesImpl(
     override fun isFavoriteMovie(id: Int) = moviesRepository.isFavoriteMovie(id)
 
     override suspend fun toggleFavoriteMovie(showData: ShowData) {
-        moviesRepository.toggleFavoriteMovie(MovieBrief(showData.id, showData.title, showData.poster, showData.backdrop, showData.rating, showData.genres.map { it.first }))
+        //todo : 0, 0,
+        moviesRepository.toggleFavoriteMovie(MovieBrief(0, 0, showData.id, showData.title, showData.poster, showData.backdrop, showData.rating, showData.genres.map { it.first }))
     }
 
 }
