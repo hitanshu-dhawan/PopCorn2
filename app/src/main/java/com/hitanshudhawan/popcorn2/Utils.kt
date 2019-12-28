@@ -179,3 +179,13 @@ fun <T> resource(
     }
 
 }
+
+suspend fun <T> resource2(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit): Resource<T> {
+    val resource = network()
+    if (resource is Resource.Success) {
+        save(resource.data)
+        return resource
+    } else {
+        return database()
+    }
+}
