@@ -6,7 +6,7 @@ import com.hitanshudhawan.popcorn2.network.MoviesService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class ViewAllMoviesDataSource(
+class ViewAllPopularMoviesDataSource(
     private val moviesService: MoviesService,
     private val cacheMoviesDao: CacheMoviesDao
     //...
@@ -16,21 +16,21 @@ class ViewAllMoviesDataSource(
         GlobalScope.launch {
             val resource = resource<List<MovieBrief>>(
                 network = {
-                    val response = safe { moviesService.getNowPlayingMovies(1) }
+                    val response = safe { moviesService.getPopularMovies(1) }
                     if (response != null && response.isSuccessful)
                         Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
                 database = {
-                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(1) }
+                    val movieBriefEntities = safe { cacheMoviesDao.getPopularMovies(1) }
                     if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                         Resource.Success(movieBriefEntities.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
                 save = {
-                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
+                    cacheMoviesDao.insertPopularMovies(it.mapToPopularMovieBriefEntities())
                 }
             )
 
@@ -50,21 +50,21 @@ class ViewAllMoviesDataSource(
         GlobalScope.launch {
             val resource = resource<List<MovieBrief>>(
                 network = {
-                    val response = safe { moviesService.getNowPlayingMovies(params.key) }
+                    val response = safe { moviesService.getPopularMovies(params.key) }
                     if (response != null && response.isSuccessful)
                         Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
                 database = {
-                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(params.key) }
+                    val movieBriefEntities = safe { cacheMoviesDao.getPopularMovies(params.key) }
                     if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
                         Resource.Success(movieBriefEntities.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
                 save = {
-                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
+                    cacheMoviesDao.insertPopularMovies(it.mapToPopularMovieBriefEntities())
                 }
             )
 

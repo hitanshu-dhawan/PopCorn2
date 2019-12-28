@@ -11,11 +11,12 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_view_all_movies.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class ViewAllMoviesFragment : Fragment() {
 
     private val args: ViewAllMoviesFragmentArgs by navArgs()
-    private val viewAllMoviesViewModel: ViewAllMoviesViewModel by viewModel()
+    private val viewAllMoviesViewModel: ViewAllMoviesViewModel by viewModel { parametersOf(args.moviesType) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_view_all_movies, container, false)
@@ -31,7 +32,7 @@ class ViewAllMoviesFragment : Fragment() {
             adapter = ViewAllMoviesAdapter()
             addItemDecoration(GridLayoutMarginDecoration(8.toPx(), 8.toPx(), (layoutManager as GridLayoutManager).spanCount))
         }
-        viewAllMoviesViewModel.getPaginatedMovieBriefs().observe(this, Observer {
+        viewAllMoviesViewModel.getPaginatedMovies().observe(this, Observer {
             (view_all_recycler_view.adapter as ViewAllMoviesAdapter).submitList(it)
         })
 

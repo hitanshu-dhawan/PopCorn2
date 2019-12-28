@@ -14,6 +14,7 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -148,8 +149,11 @@ val networkKoinModule = module {
 
 
 val extraKoinModule = module {
-    single { ViewAllMoviesDataSource(get(), get()) }
-    single { ViewAllMoviesDataSourceFactory(get()) }
+    single { ViewAllNowPlayingMoviesDataSource(get(), get()) }
+    single { ViewAllPopularMoviesDataSource(get(), get()) }
+    single { (moviesType: ViewAllMoviesFragment.MoviesType) ->
+        ViewAllMoviesDataSourceFactory(moviesType, get(), get())
+    }
     single {
         PagedList.Config.Builder()
             .setPageSize(20)
@@ -158,5 +162,7 @@ val extraKoinModule = module {
             .setEnablePlaceholders(false)
             .build()
     }
-    single { ViewAllMoviesViewModel(get(), get()) }
+    single { (moviesType: ViewAllMoviesFragment.MoviesType) ->
+        ViewAllMoviesViewModel(moviesType, get { parametersOf(moviesType) }, get())
+    }
 }

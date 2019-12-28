@@ -6,12 +6,12 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 
 class ViewAllMoviesViewModel(
+    private val moviesType: ViewAllMoviesFragment.MoviesType,
     private val dataSourceFactory: ViewAllMoviesDataSourceFactory,
     private val config: PagedList.Config
 ) : ViewModel() {
 
-    //todo : getPaginatedMovieBriefs() - change name
-    fun getPaginatedMovieBriefs(): LiveData<PagedList<MovieBrief>> {
+    fun getPaginatedMovies(): LiveData<PagedList<MovieBrief>> {
         return LivePagedListBuilder(dataSourceFactory, config).build()
     }
 
