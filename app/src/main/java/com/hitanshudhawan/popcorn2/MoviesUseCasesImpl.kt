@@ -1,34 +1,30 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 
 class MoviesUseCasesImpl(
     private val moviesRepository: MoviesRepository,
     private val genresRepository: GenresRepository
 ) : MoviesUseCases {
 
-    override fun getNowPlayingMovies(): LiveData<Resource<List<ShowData>>> {
-        return zip(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-            getShowData(movieBriefs, genres)
-        }
+    override fun getNowPlayingMovies() = liveData {
+        emit(Resource.Loading())
+        emit(getShowData(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()))
     }
 
-    override fun getPopularMovies(): LiveData<Resource<List<ShowData>>> {
-        return zip(moviesRepository.getPopularMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-            getShowData(movieBriefs, genres)
-        }
+    override fun getPopularMovies() = liveData {
+        emit(Resource.Loading())
+        emit(getShowData(moviesRepository.getPopularMovies(), genresRepository.getMovieGenres()))
     }
 
-    override fun getUpcomingMovies(): LiveData<Resource<List<ShowData>>> {
-        return zip(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-            getShowData(movieBriefs, genres)
-        }
+    override fun getUpcomingMovies() = liveData {
+        emit(Resource.Loading())
+        emit(getShowData(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()))
     }
 
-    override fun getTopRatedMovies(): LiveData<Resource<List<ShowData>>> {
-        return zip(moviesRepository.getTopRatedMovies(), genresRepository.getMovieGenres()) { movieBriefs, genres ->
-            getShowData(movieBriefs, genres)
-        }
+    override fun getTopRatedMovies() = liveData {
+        emit(Resource.Loading())
+        emit(getShowData(moviesRepository.getTopRatedMovies(), genresRepository.getMovieGenres()))
     }
 
     private fun getShowData(movieBriefs: Resource<List<MovieBrief>>, genres: Resource<List<Genre>>): Resource<List<ShowData>> {
