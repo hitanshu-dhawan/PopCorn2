@@ -162,25 +162,8 @@ suspend fun <T> safe(call: suspend () -> T): T? {
     }
 }
 
-fun <T> resource(
-    network: suspend () -> Resource<T> = { Resource.Error() },
-    database: suspend () -> Resource<T> = { Resource.Error() },
-    save: suspend (T) -> Unit = {}
-) = liveData {
-
-    emit(Resource.Loading())
-
-    val resource = network()
-    if (resource is Resource.Success) {
-        emit(resource)
-        save(resource.data)
-    } else {
-        emit(database())
-    }
-
-}
-
-suspend fun <T> resource2(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit): Resource<T> {
+// hitanshu : write documentation
+suspend fun <T> resource(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit): Resource<T> {
     val resource = network()
     if (resource is Resource.Success) {
         save(resource.data)

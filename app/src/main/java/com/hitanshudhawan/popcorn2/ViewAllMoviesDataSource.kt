@@ -14,7 +14,7 @@ class ViewAllMoviesDataSource(
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, MovieBrief>) {
         GlobalScope.launch {
-            val resource = resource2<List<MovieBrief>>(
+            val resource = resource<List<MovieBrief>>(
                 network = {
                     val response = safe { moviesService.getNowPlayingMovies(1) }
                     if (response != null && response.isSuccessful)
@@ -48,7 +48,7 @@ class ViewAllMoviesDataSource(
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieBrief>) {
         GlobalScope.launch {
-            val resource = resource2<List<MovieBrief>>(
+            val resource = resource<List<MovieBrief>>(
                 network = {
                     val response = safe { moviesService.getNowPlayingMovies(params.key) }
                     if (response != null && response.isSuccessful)
