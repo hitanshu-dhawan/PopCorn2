@@ -22,7 +22,10 @@ android {
 
     signingConfigs {
         getByName("debug") {
-
+            keyAlias = project.property("keyAlias") as String
+            keyPassword = project.property("keyPassword") as String
+            storeFile = rootProject.file(project.property("storeFile") as String)
+            storePassword = project.property("storePassword") as String
         }
     }
 
