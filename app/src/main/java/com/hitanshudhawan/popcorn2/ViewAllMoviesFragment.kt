@@ -29,7 +29,7 @@ class ViewAllMoviesFragment : Fragment() {
         view_all_recycler_view.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = ViewAllMoviesAdapter()
-            addItemDecoration(GridLayoutMarginDecoration(8.toPx(), 8.toPx(), 3))
+            addItemDecoration(GridLayoutMarginDecoration(8.toPx(), 8.toPx(), (layoutManager as GridLayoutManager).spanCount))
         }
         viewAllMoviesViewModel.getPaginatedMovieBriefs().observe(this, Observer {
             (view_all_recycler_view.adapter as ViewAllMoviesAdapter).submitList(it)
