@@ -1,17 +1,16 @@
 package com.hitanshudhawan.popcorn2
 
 import com.hitanshudhawan.popcorn2.database.cache.*
-import com.hitanshudhawan.popcorn2.network.models.GenreJson
-import com.hitanshudhawan.popcorn2.network.models.MovieBriefJson
+import com.hitanshudhawan.popcorn2.network.models.*
 
 
 /**
  * Movies
  */
 
-@JvmName("mapMovieBriefJsonsToMovieBriefs")
-fun List<MovieBriefJson>.mapToMovieBriefs(): List<MovieBrief> {
-    return this.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
+@JvmName("mapMoviesJsonToMovieBriefs")
+fun MoviesJson.mapToMovieBriefs(): List<MovieBrief> {
+    return this.results.map { MovieBrief(it.id, it.title, it.poster_path, it.backdrop_path, it.vote_average, it.genre_ids) }
 }
 
 @JvmName("mapMovieBriefsToNowPlayingMovieBriefEntities")
@@ -59,9 +58,9 @@ fun List<CacheTopRatedMovieBriefEntity>.mapToMovieBriefs(): List<MovieBrief> {
  * Genres
  */
 
-@JvmName("mapGenreJsonsToGenres")
-fun List<GenreJson>.mapToGenres(): List<Genre> {
-    return this.map { Genre(it.id, it.name) }
+@JvmName("mapGenresJsonToGenres")
+fun GenresJson.mapToGenres(): List<Genre> {
+    return this.genres.map { Genre(it.id, it.name) }
 }
 
 @JvmName("mapGenresToMovieGenreEntities")

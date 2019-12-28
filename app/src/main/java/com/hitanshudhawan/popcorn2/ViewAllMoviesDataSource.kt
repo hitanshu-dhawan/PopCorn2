@@ -13,33 +13,33 @@ class ViewAllMoviesDataSource(
 ) : PageKeyedDataSource<Int, MovieBrief>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, MovieBrief>) {
-        GlobalScope.launch {
-            val resource = resource<List<MovieBrief>>(
-                network = {
-                    val response = safe { moviesService.getNowPlayingMovies(1) }
-                    if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
-                    else
-                        Resource.Error()
-                },
-                database = {
-                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(1) }
-                    if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
-                        Resource.Success(movieBriefEntities.mapToMovieBriefs())
-                    else
-                        Resource.Error()
-                },
-                save = {
-                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
-                }
-            )
-
-            if (resource is Resource.Success) {
-                callback.onResult(resource.data, null, 2)
-            } else {
-                callback.onError(Exception())
-            }
-        }
+//        GlobalScope.launch {
+//            val resource = resource<List<MovieBrief>>(
+//                network = {
+//                    val response = safe { moviesService.getNowPlayingMovies(1) }
+//                    if (response != null && response.isSuccessful)
+//                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+//                    else
+//                        Resource.Error()
+//                },
+//                database = {
+//                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(1) }
+//                    if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+//                        Resource.Success(movieBriefEntities.mapToMovieBriefs())
+//                    else
+//                        Resource.Error()
+//                },
+//                save = {
+//                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
+//                }
+//            )
+//
+//            if (resource is Resource.Success) {
+//                callback.onResult(resource.data, null, 2)
+//            } else {
+//                callback.onError(Exception())
+//            }
+//        }
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, MovieBrief>) {
@@ -47,33 +47,33 @@ class ViewAllMoviesDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieBrief>) {
-        GlobalScope.launch {
-            val resource = resource<List<MovieBrief>>(
-                network = {
-                    val response = safe { moviesService.getNowPlayingMovies(params.key) }
-                    if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
-                    else
-                        Resource.Error()
-                },
-                database = {
-                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(params.key) }
-                    if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
-                        Resource.Success(movieBriefEntities.mapToMovieBriefs())
-                    else
-                        Resource.Error()
-                },
-                save = {
-                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
-                }
-            )
-
-            if (resource is Resource.Success) {
-                callback.onResult(resource.data, params.key + 1)
-            } else {
-                callback.onError(Exception())
-            }
-        }
+//        GlobalScope.launch {
+//            val resource = resource<List<MovieBrief>>(
+//                network = {
+//                    val response = safe { moviesService.getNowPlayingMovies(params.key) }
+//                    if (response != null && response.isSuccessful)
+//                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+//                    else
+//                        Resource.Error()
+//                },
+//                database = {
+//                    val movieBriefEntities = safe { cacheMoviesDao.getNowPlayingMovies(params.key) }
+//                    if (movieBriefEntities != null && movieBriefEntities.isNotEmpty())
+//                        Resource.Success(movieBriefEntities.mapToMovieBriefs())
+//                    else
+//                        Resource.Error()
+//                },
+//                save = {
+//                    cacheMoviesDao.insertNowPlayingMovies(it.mapToNowPlayingMovieBriefEntities())
+//                }
+//            )
+//
+//            if (resource is Resource.Success) {
+//                callback.onResult(resource.data, params.key + 1)
+//            } else {
+//                callback.onError(Exception())
+//            }
+//        }
     }
 
 }

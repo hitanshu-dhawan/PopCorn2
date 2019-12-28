@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -158,7 +159,9 @@
                 android:id="@+id/views"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="now_playing_text_view,now_playing_view_all_text_view,now_playing_recycler_view,popular_text_view,popular_view_all_text_view,popular_recycler_view,upcoming_text_view,upcoming_view_all_text_view,upcoming_recycler_view,top_rated_text_view,top_rated_view_all_text_view,top_rated_recycler_view" />
+                android:visibility="gone"
+                app:constraint_referenced_ids="now_playing_text_view,now_playing_view_all_text_view,now_playing_recycler_view,popular_text_view,popular_view_all_text_view,popular_recycler_view,upcoming_text_view,upcoming_view_all_text_view,upcoming_recycler_view,top_rated_text_view,top_rated_view_all_text_view,top_rated_recycler_view"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -168,6 +171,8 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </FrameLayout>

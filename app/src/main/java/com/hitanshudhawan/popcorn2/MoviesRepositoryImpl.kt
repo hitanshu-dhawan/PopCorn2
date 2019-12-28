@@ -22,7 +22,7 @@ class MoviesRepositoryImpl(
                 network = {
                     val response = safe { moviesService.getNowPlayingMovies() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+                        Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
@@ -47,7 +47,7 @@ class MoviesRepositoryImpl(
                 network = {
                     val response = safe { moviesService.getPopularMovies() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+                        Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
@@ -72,7 +72,7 @@ class MoviesRepositoryImpl(
                 network = {
                     val response = safe { moviesService.getUpcomingMovies() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+                        Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },
@@ -97,7 +97,7 @@ class MoviesRepositoryImpl(
                 network = {
                     val response = safe { moviesService.getTopRatedMovies() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.results.mapToMovieBriefs())
+                        Resource.Success(response.body()!!.mapToMovieBriefs())
                     else
                         Resource.Error()
                 },

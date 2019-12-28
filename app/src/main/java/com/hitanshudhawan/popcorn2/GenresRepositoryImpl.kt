@@ -16,7 +16,7 @@ class GenresRepositoryImpl(
                 network = {
                     val response = safe { genresService.getMovieGenres() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.genres.mapToGenres())
+                        Resource.Success(response.body()!!.mapToGenres())
                     else
                         Resource.Error()
                 },
@@ -41,7 +41,7 @@ class GenresRepositoryImpl(
                 network = {
                     val response = safe { genresService.getTVShowGenres() }
                     if (response != null && response.isSuccessful)
-                        Resource.Success(response.body()!!.genres.mapToGenres())
+                        Resource.Success(response.body()!!.mapToGenres())
                     else
                         Resource.Error()
                 },
