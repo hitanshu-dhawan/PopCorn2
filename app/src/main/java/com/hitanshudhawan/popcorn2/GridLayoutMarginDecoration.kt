@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+// hitanshu : BUG : if (column == 0)
 class GridLayoutMarginDecoration(
     private val verticalMargin: Int,
     private val horizontalMargin: Int,
@@ -15,10 +16,10 @@ class GridLayoutMarginDecoration(
         val row = position / spanCount
         val column = position % spanCount
         with(outRect) {
-            if (row == 0)
+            // if (row == 0)
                 top = verticalMargin
             bottom = verticalMargin
-            if (column == 0)
+            // if (column == 0)
                 left = horizontalMargin
             right = horizontalMargin
         }

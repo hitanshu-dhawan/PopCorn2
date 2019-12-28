@@ -1,12 +1,12 @@
 package com.hitanshudhawan.popcorn2.database.cache
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity
+@Entity(primaryKeys = ["page", "index"])
 data class CacheNowPlayingMovieBriefEntity(
-    @PrimaryKey(autoGenerate = true)
-    val __id: Int,
+    val page: Int,
+    val index: Int,
+    //
     val id: Int,
     val title: String,
     val poster: String?,

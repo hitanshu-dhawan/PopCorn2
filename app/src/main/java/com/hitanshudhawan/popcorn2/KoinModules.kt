@@ -2,6 +2,7 @@ package com.hitanshudhawan.popcorn2
 
 import androidx.paging.PagedList
 import androidx.room.Room
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
 import com.hitanshudhawan.popcorn2.database.favorite.FavoriteDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
@@ -71,6 +72,8 @@ val networkKoinModule = module {
     single {
         OkHttpClient.Builder()
             .addInterceptor(ApiKeyInterceptor(BuildConfig.API_KEY))
+            // hitanshu : BuildConfig.DEBUG
+            .addNetworkInterceptor(StethoInterceptor())
             .build()
     }
 
@@ -145,7 +148,7 @@ val networkKoinModule = module {
 
 
 val extraKoinModule = module {
-    single { ViewAllMoviesDataSource(get()) }
+    single { ViewAllMoviesDataSource(get(), get()) }
     single { ViewAllMoviesDataSourceFactory(get()) }
     single {
         PagedList.Config.Builder()

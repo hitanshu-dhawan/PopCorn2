@@ -10,10 +10,8 @@ class PopCorn2Application : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // hitanshu : better place, maybe Koin Modules
-        if (BuildConfig.DEBUG) {
-            Stetho.initializeWithDefaults(this)
-        }
+        // hitanshu : BuildConfig.DEBUG
+        Stetho.initializeWithDefaults(this)
 
         startKoin {
             androidContext(this@PopCorn2Application)
