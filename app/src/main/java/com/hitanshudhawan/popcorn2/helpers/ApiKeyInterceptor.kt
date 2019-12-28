@@ -1,4 +1,4 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.helpers
 
 import okhttp3.Interceptor
 import okhttp3.Response

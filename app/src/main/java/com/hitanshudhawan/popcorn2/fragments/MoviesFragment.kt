@@ -1,4 +1,4 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.hitanshudhawan.popcorn2.R
+import com.hitanshudhawan.popcorn2.network.MoviesService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

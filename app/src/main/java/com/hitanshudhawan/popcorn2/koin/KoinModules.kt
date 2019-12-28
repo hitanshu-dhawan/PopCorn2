@@ -1,5 +1,10 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.koin
 
+import com.hitanshudhawan.popcorn2.BuildConfig
+import com.hitanshudhawan.popcorn2.helpers.ApiKeyInterceptor
+import com.hitanshudhawan.popcorn2.network.GenresService
+import com.hitanshudhawan.popcorn2.network.MoviesService
+import com.hitanshudhawan.popcorn2.network.TVShowsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
@@ -14,7 +19,11 @@ val networkKoinModule = module {
     // OkHttpClient
     single {
         OkHttpClient.Builder()
-            .addInterceptor(ApiKeyInterceptor(BuildConfig.API_KEY))
+            .addInterceptor(
+                ApiKeyInterceptor(
+                    BuildConfig.API_KEY
+                )
+            )
             .build()
     }
 

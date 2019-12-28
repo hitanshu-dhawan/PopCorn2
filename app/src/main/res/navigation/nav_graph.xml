@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/movies_destination"
-        android:name="com.hitanshudhawan.popcorn2.MoviesFragment"
+        android:name="com.hitanshudhawan.popcorn2.fragments.MoviesFragment"
         android:label="@string/movies"
         tools:layout="@layout/fragment_movies" />
 
     <fragment
         android:id="@+id/tv_shows_destination"
-        android:name="com.hitanshudhawan.popcorn2.TVShowsFragment"
+        android:name="com.hitanshudhawan.popcorn2.fragments.TVShowsFragment"
         android:label="@string/tv_shows"
         tools:layout="@layout/fragment_tv_shows" />
 
     <fragment
         android:id="@+id/favorites_destination"
-        android:name="com.hitanshudhawan.popcorn2.FavoritesFragment"
+        android:name="com.hitanshudhawan.popcorn2.fragments.FavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>
