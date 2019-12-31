@@ -1,30 +1,24 @@
 package com.hitanshudhawan.popcorn2
 
-import androidx.lifecycle.liveData
-
 class MoviesUseCasesImpl(
     private val moviesRepository: MoviesRepository,
     private val genresRepository: GenresRepository
 ) : MoviesUseCases {
 
-    override fun getNowPlayingMovies() = liveData {
-        emit(Resource.Loading())
-        emit(getShowData(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres()))
+    override suspend fun getNowPlayingMovies(): Resource<List<ShowData>> {
+        return getShowData(moviesRepository.getNowPlayingMovies(), genresRepository.getMovieGenres())
     }
 
-    override fun getPopularMovies() = liveData {
-        emit(Resource.Loading())
-        emit(getShowData(moviesRepository.getPopularMovies(), genresRepository.getMovieGenres()))
+    override suspend fun getPopularMovies(): Resource<List<ShowData>> {
+        return getShowData(moviesRepository.getPopularMovies(), genresRepository.getMovieGenres())
     }
 
-    override fun getUpcomingMovies() = liveData {
-        emit(Resource.Loading())
-        emit(getShowData(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres()))
+    override suspend fun getUpcomingMovies(): Resource<List<ShowData>> {
+        return getShowData(moviesRepository.getUpcomingMovies(), genresRepository.getMovieGenres())
     }
 
-    override fun getTopRatedMovies() = liveData {
-        emit(Resource.Loading())
-        emit(getShowData(moviesRepository.getTopRatedMovies(), genresRepository.getMovieGenres()))
+    override suspend fun getTopRatedMovies(): Resource<List<ShowData>> {
+        return getShowData(moviesRepository.getTopRatedMovies(), genresRepository.getMovieGenres())
     }
 
     private fun getShowData(movieBriefs: Resource<List<MovieBrief>>, genres: Resource<List<Genre>>): Resource<List<ShowData>> {

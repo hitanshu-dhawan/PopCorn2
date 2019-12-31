@@ -1,6 +1,7 @@
 package com.hitanshudhawan.popcorn2
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -8,15 +9,17 @@ class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() 
 
     //todo : how to handle swipe to refresh
     //todo : how will you reassign `val moviesState`
-    val moviesState by lazy {
-        zip(
-            moviesUseCases.getNowPlayingMovies(),
-            moviesUseCases.getPopularMovies(),
-            moviesUseCases.getUpcomingMovies(),
-            moviesUseCases.getTopRatedMovies()
-        ) { nowPlayingMovieBriefs, popularMovieBriefs, upcomingMovieBriefs, topRatedMovieBriefs ->
-            getMoviesState(nowPlayingMovieBriefs, popularMovieBriefs, upcomingMovieBriefs, topRatedMovieBriefs)
-        }
+    // hitanshu : use async {} here
+    val moviesState = liveData {
+        emit(MoviesState.Loading)
+        emit(
+            getMoviesState(
+                moviesUseCases.getNowPlayingMovies(),
+                moviesUseCases.getPopularMovies(),
+                moviesUseCases.getUpcomingMovies(),
+                moviesUseCases.getTopRatedMovies()
+            )
+        )
     }
 
     private fun getMoviesState(
@@ -35,7 +38,9 @@ class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() 
     fun isFavoriteMovie(id: Int) = moviesUseCases.isFavoriteMovie(id)
 
     fun toggleFavoriteMovie(showData: ShowData) {
-        viewModelScope.launch { moviesUseCases.toggleFavoriteMovie(showData) }
+        viewModelScope.launch {
+            moviesUseCases.toggleFavoriteMovie(showData)
+        }
     }
 
 }

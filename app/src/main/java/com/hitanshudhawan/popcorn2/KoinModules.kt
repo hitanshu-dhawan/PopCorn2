@@ -149,8 +149,8 @@ val networkKoinModule = module {
 
 
 val extraKoinModule = module {
-    single { ViewAllNowPlayingMoviesDataSource(get(), get()) }
-    single { ViewAllPopularMoviesDataSource(get(), get()) }
+    single { ViewAllNowPlayingMoviesDataSource(get()) }
+    single { ViewAllPopularMoviesDataSource(get()) }
     single { (moviesType: ViewAllMoviesFragment.MoviesType) ->
         ViewAllMoviesDataSourceFactory(moviesType, get(), get())
     }
