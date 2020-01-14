@@ -5,9 +5,18 @@
 PopCorn2
 ========
 
-PopCorn2 is an attempt to re-write the actual [PopCorn](https://github.com/hitanshu-dhawan/PopCorn) app with a clean articheture and with latest 2019 tech stack.
+<b>PopCorn2 is an attempt to re-write the actual [PopCorn](https://github.com/hitanshu-dhawan/PopCorn) app with a clean articheture and latest 2020 tech stack.</b>
 
-## :warning::warning: Currently under heavy development :warning::warning:
+### This is how it will look...
+<img src="https://github.com/hitanshu-dhawan/PopCorn/blob/master/images/movies.gif" height=512 width=288></img>
+<img src="https://github.com/hitanshu-dhawan/PopCorn/blob/master/images/favorites.gif" height=512 width=288></img>
+<img src="https://github.com/hitanshu-dhawan/PopCorn/blob/master/images/search.gif" height=512 width=288></img>
+
+---
+
+## :warning::exclamation::warning: Currently under Heavy Development :warning::exclamation::warning:
+
+---
 
 ### Tech stack
 - [x] AndroidX
