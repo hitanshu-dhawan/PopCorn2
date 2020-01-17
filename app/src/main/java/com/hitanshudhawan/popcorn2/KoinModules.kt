@@ -88,7 +88,7 @@ val networkKoinModule = module {
     // Retrofit
     single {
         Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl("https://api.themoviedb.org/3/") // todo : use koin properties for base url, it can be changed programmatically in testing (getKoin())
             .client(get())
             .addConverterFactory(MoshiConverterFactory.create(get()))
             .build()
