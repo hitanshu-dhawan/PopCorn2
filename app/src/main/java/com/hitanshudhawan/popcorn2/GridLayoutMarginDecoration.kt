@@ -10,6 +10,7 @@ class GridLayoutMarginDecoration(
     private val spanCount: Int
 ) : RecyclerView.ItemDecoration() {
 
+    // link : https://stackoverflow.com/a/30701422
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val position = parent.getChildAdapterPosition(view)
         with(outRect) {
