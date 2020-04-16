@@ -62,7 +62,7 @@ class MoviesFragment : Fragment() {
                         }
                     }
                     now_playing_view_all_text_view.setOnClickListener {
-                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.NOW_PLAYING))
+                        //...
                     }
 
                     popular_recycler_view.apply {
@@ -90,7 +90,7 @@ class MoviesFragment : Fragment() {
                         }
                     }
                     popular_view_all_text_view.setOnClickListener {
-                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.POPULAR))
+                        //...
                     }
 
                     upcoming_recycler_view.apply {
@@ -120,7 +120,7 @@ class MoviesFragment : Fragment() {
                         }
                     }
                     upcoming_view_all_text_view.setOnClickListener {
-                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.UPCOMING))
+                        //...
                     }
 
                     top_rated_recycler_view.apply {
@@ -148,7 +148,7 @@ class MoviesFragment : Fragment() {
                         }
                     }
                     top_rated_view_all_text_view.setOnClickListener {
-                        findNavController().navigate(MoviesFragmentDirections.actionMoviesDestinationToViewAllMoviesDestination(ViewAllMoviesFragment.MoviesType.TOP_RATED))
+                        //...
                     }
 
                 }
