@@ -16,10 +16,14 @@ android {
 
     defaultConfig {
         applicationId = "com.hitanshudhawan.popcorn2"
+
         minSdkVersion(26)
         targetSdkVersion(29)
+
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
     }
 
 //    signingConfigs {
@@ -31,16 +35,16 @@ android {
 //        }
 //    }
 
-    buildTypes {
-        getByName("debug") {
-            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-//            signingConfig = signingConfigs.getByName("debug")
-        }
-        getByName("release") {
-            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-//            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
+//    buildTypes {
+//        getByName("debug") {
+//            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+////            signingConfig = signingConfigs.getByName("debug")
+//        }
+//        getByName("release") {
+//            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+////            signingConfig = signingConfigs.getByName("debug")
+//        }
+//    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
