@@ -31,12 +31,12 @@ android {
 //        }
 //    }
 
-//    buildTypes {
-//        getByName("debug") {
-//            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+    buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
 //            signingConfig = signingConfigs.getByName("debug")
-//        }
-//    }
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
