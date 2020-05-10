@@ -32,10 +32,10 @@ android {
 //    }
 
     buildTypes {
-//        getByName("debug") {
+        getByName("debug") {
         buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
 //            signingConfig = signingConfigs.getByName("debug")
-//        }
+        }
     }
 
     compileOptions {
