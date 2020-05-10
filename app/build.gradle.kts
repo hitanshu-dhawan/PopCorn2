@@ -22,22 +22,23 @@ android {
         versionName = "1.0"
     }
 
-//    signingConfigs {
-//        getByName("debug") {
-//            keyAlias = project.property("keyAlias") as String
-//            keyPassword = project.property("keyPassword") as String
-//            storeFile = rootProject.file(project.property("storeFile") as String)
-//            storePassword = project.property("storePassword") as String
-//        }
-//    }
+    signingConfigs {
+        getByName("release") {
+            keyAlias = project.property("keyAlias") as String
+            keyPassword = project.property("keyPassword") as String
+            storeFile = rootProject.file(project.property("storeFile") as String)
+            storePassword = project.property("storePassword") as String
+        }
+    }
 
+    // hitanshu : add proguard files
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
         }
         getByName("release") {
             buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-//            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
