@@ -22,21 +22,21 @@ android {
         versionName = "1.0"
     }
 
-    signingConfigs {
-        getByName("debug") {
-            keyAlias = project.property("keyAlias") as String
-            keyPassword = project.property("keyPassword") as String
-            storeFile = rootProject.file(project.property("storeFile") as String)
-            storePassword = project.property("storePassword") as String
-        }
-    }
+//    signingConfigs {
+//        getByName("debug") {
+//            keyAlias = project.property("keyAlias") as String
+//            keyPassword = project.property("keyPassword") as String
+//            storeFile = rootProject.file(project.property("storeFile") as String)
+//            storePassword = project.property("storePassword") as String
+//        }
+//    }
 
-    buildTypes {
-        getByName("debug") {
-            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
+//    buildTypes {
+//        getByName("debug") {
+//            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+//            signingConfig = signingConfigs.getByName("debug")
+//        }
+//    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
