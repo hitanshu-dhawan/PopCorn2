@@ -96,3 +96,5 @@ dependencies {
 
     testImplementation("junit:junit:4.12")
 }
+
+// hitanshu : add KtLint to this project
