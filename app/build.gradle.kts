@@ -24,10 +24,14 @@ android {
 
     signingConfigs {
         register("release") {
-            storeFile = rootProject.file(project.property("storeFile") as String)
-            storePassword = project.property("storePassword") as String
-            keyAlias = project.property("keyAlias") as String
-            keyPassword = project.property("keyPassword") as String
+            if (project.hasProperty("storeFile"))
+                storeFile = rootProject.file(project.property("storeFile") as String)
+            if (project.hasProperty("storePassword"))
+                storePassword = project.property("storePassword") as String
+            if (project.hasProperty("keyAlias"))
+                keyAlias = project.property("keyAlias") as String
+            if (project.hasProperty("keyPassword"))
+                keyPassword = project.property("keyPassword") as String
         }
     }
 
