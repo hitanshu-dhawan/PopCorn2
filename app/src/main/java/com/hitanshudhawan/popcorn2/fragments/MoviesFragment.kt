@@ -1,4 +1,4 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +15,7 @@ import com.afollestad.recyclical.datasource.dataSourceTypedOf
 import com.afollestad.recyclical.itemdefinition.onChildViewClick
 import com.afollestad.recyclical.setup
 import com.afollestad.recyclical.withItem
+import com.hitanshudhawan.popcorn2.*
 import kotlinx.android.synthetic.main.fragment_movies.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

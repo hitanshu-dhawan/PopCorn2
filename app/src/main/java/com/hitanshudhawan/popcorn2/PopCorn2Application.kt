@@ -2,6 +2,7 @@ package com.hitanshudhawan.popcorn2
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import com.hitanshudhawan.popcorn2.koin.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

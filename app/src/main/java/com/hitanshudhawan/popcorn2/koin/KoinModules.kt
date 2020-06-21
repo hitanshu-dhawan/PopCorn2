@@ -1,8 +1,9 @@
-package com.hitanshudhawan.popcorn2
+package com.hitanshudhawan.popcorn2.koin
 
 import androidx.paging.PagedList
 import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.hitanshudhawan.popcorn2.*
 import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
 import com.hitanshudhawan.popcorn2.database.favorite.FavoriteDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
