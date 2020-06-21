@@ -6,17 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.hitanshudhawan.popcorn2.R
-import com.hitanshudhawan.popcorn2.network.MoviesService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
+import com.afollestad.recyclical.datasource.dataSourceTypedOf
+import com.afollestad.recyclical.itemdefinition.onChildViewClick
+import com.afollestad.recyclical.setup
+import com.afollestad.recyclical.withItem
+import com.hitanshudhawan.popcorn2.*
+import kotlinx.android.synthetic.main.fragment_movies.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
 
-    private val moviesService: MoviesService by inject()
+    private val moviesViewModel: MoviesViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movies, container, false)
@@ -25,23 +30,139 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        GlobalScope.launch(Dispatchers.IO) {
+        moviesViewModel.moviesState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is MoviesState.Success -> {
+                    views.visibility = View.VISIBLE
+                    progress_bar.visibility = View.GONE
 
-            val a = moviesService.getNowPlayingMovies()
-            val b = moviesService.getPopularMovies()
-            val c = moviesService.getUpcomingMovies()
-            val d = moviesService.getTopRatedMovies()
+                    now_playing_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.9).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.nowPlayingMovies))
+                            withItem<ShowData, ShowBannerViewHolder>(R.layout.item_show_banner) {
+                                onBind(::ShowBannerViewHolder) { index, item ->
+                                    backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
+                                    title.text = item.title
+                                    rating.text = "${item.rating}*"
+                                    genres.text = item.genres.joinToString { it.second }
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
+                                }
+                            }
+                        }
+                    }
+                    now_playing_view_all_text_view.setOnClickListener {
+                        //...
+                    }
 
-            val e = moviesService.getMovieDetails(a.results[0].id)
-            val f = moviesService.getMovieVideos(a.results[0].id)
-            val g = moviesService.getMovieCredits(a.results[0].id)
-            val h = moviesService.getSimilarMovies(a.results[0].id)
+                    popular_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.3).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.popularMovies))
+                            withItem<ShowData, ShowCardViewHolder>(R.layout.item_show_card) {
+                                onBind(::ShowCardViewHolder) { index, item ->
+                                    poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
+                                    title.text = item.title
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
+                                }
+                            }
+                        }
+                    }
+                    popular_view_all_text_view.setOnClickListener {
+                        //...
+                    }
 
-            withContext(Dispatchers.Main) {
-                Toast.makeText(this@MoviesFragment.context, "${(a.results + b.results + c.results + d.results).size}", Toast.LENGTH_SHORT).show()
+                    upcoming_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.9).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.upcomingMovies))
+                            withItem<ShowData, ShowBannerViewHolder>(R.layout.item_show_banner) {
+                                onBind(::ShowBannerViewHolder) { index, item ->
+                                    backdrop.load("https://image.tmdb.org/t/p/w1280/${item.backdrop}")
+                                    title.text = item.title
+                                    rating.text = "${item.rating}*"
+                                    genres.text = item.genres.joinToString { it.second }
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
+                                }
+                            }
+                        }
+                    }
+                    upcoming_view_all_text_view.setOnClickListener {
+                        //...
+                    }
+
+                    top_rated_recycler_view.apply {
+                        layoutManager = object : LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) {
+                            override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
+                                lp?.run { width = (getWidth() * 0.3).toInt() }
+                                return true
+                            }
+                        }
+                        addItemDecoration(LinearLayoutMarginDecoration(8.toPx(), 8.toPx(), RecyclerView.HORIZONTAL))
+                        setup {
+                            withDataSource(dataSourceTypedOf(it.topRatedMovies))
+                            withItem<ShowData, ShowCardViewHolder>(R.layout.item_show_card) {
+                                onBind(::ShowCardViewHolder) { index, item ->
+                                    poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
+                                    title.text = item.title
+                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
+                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
+                                    })
+                                }
+                                onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
+                                    moviesViewModel.toggleFavoriteMovie(item)
+                                }
+                            }
+                        }
+                    }
+                    top_rated_view_all_text_view.setOnClickListener {
+                        //...
+                    }
+
+                }
+                is MoviesState.Error -> {
+                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                }
+                is MoviesState.Loading -> {
+                    views.visibility = View.GONE
+                    progress_bar.visibility = View.VISIBLE
+                }
             }
+        })
 
-        }
     }
 
 }

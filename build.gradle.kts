@@ -9,6 +9,9 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.5.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlin_version"] as String}")
+
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0")
+
         classpath("com.dicedmelon.gradle:jacoco-android:0.1.4")
     }
 }

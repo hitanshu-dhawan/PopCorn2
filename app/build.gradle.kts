@@ -6,6 +6,8 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
 
+    id("androidx.navigation.safeargs.kotlin")
+
     id("jacoco-android")
 }
 
@@ -14,25 +16,33 @@ android {
 
     defaultConfig {
         applicationId = "com.hitanshudhawan.popcorn2"
-        minSdkVersion(21)
+        minSdkVersion(26)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
     }
 
     signingConfigs {
-        getByName("debug") {
-            keyAlias = project.property("keyAlias") as String
-            keyPassword = project.property("keyPassword") as String
-            storeFile = rootProject.file(project.property("storeFile") as String)
-            storePassword = project.property("storePassword") as String
+        register("release") {
+            if (project.hasProperty("storeFile"))
+                storeFile = rootProject.file(project.property("storeFile") as String)
+            if (project.hasProperty("storePassword"))
+                storePassword = project.property("storePassword") as String
+            if (project.hasProperty("keyAlias"))
+                keyAlias = project.property("keyAlias") as String
+            if (project.hasProperty("keyPassword"))
+                keyPassword = project.property("keyPassword") as String
         }
     }
 
+    // hitanshu : add proguard files
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
-            signingConfig = signingConfigs.getByName("debug")
+        }
+        getByName("release") {
+            buildConfigField("String", "API_KEY", project.property("MOVIE_DB_API_KEY") as String)
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
@@ -43,6 +53,10 @@ android {
     (kotlinOptions as KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    // dataBinding {
+    //     isEnabled = true
+    // }
 }
 
 dependencies {
@@ -64,7 +78,27 @@ dependencies {
 
     // implementation("org.koin:koin-core:2.0.1")
     implementation("org.koin:koin-android:2.0.1")
-    // implementation("org.koin:koin-android-viewmodel:2.0.1")
+    implementation("org.koin:koin-android-viewmodel:2.0.1")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc03")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc03")
+
+    // implementation("com.snakydesign.livedataextensions:lives:1.3.0")
+
+    implementation("com.afollestad:recyclical:1.1.1")
+
+    implementation("io.coil-kt:coil:0.8.0")
+
+    implementation("androidx.room:room-runtime:2.2.3")
+    kapt("androidx.room:room-compiler:2.2.3")
+    implementation("androidx.room:room-ktx:2.2.3")
+    testImplementation("androidx.room:room-testing:2.2.3")
+
+    implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+
+    implementation("androidx.paging:paging-runtime-ktx:2.1.1")
 
     testImplementation("junit:junit:4.12")
 }
+
+// hitanshu : add KtLint to this project

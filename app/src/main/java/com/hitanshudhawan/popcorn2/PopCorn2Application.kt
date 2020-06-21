@@ -1,22 +1,32 @@
 package com.hitanshudhawan.popcorn2
 
 import android.app.Application
-import com.hitanshudhawan.popcorn2.koin.networkKoinModule
+import com.facebook.stetho.Stetho
+import com.hitanshudhawan.popcorn2.koin.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class PopCorn2Application : Application() {
 
-	override fun onCreate() {
-		super.onCreate()
+    override fun onCreate() {
+        super.onCreate()
 
-		startKoin {
-			androidContext(this@PopCorn2Application)
-			modules(
-				listOf(
-					networkKoinModule
-				)
-			)
-		}
-	}
+        // hitanshu : BuildConfig.DEBUG
+        Stetho.initializeWithDefaults(this)
+
+        startKoin {
+            androidContext(this@PopCorn2Application)
+            modules(
+                listOf(
+                    viewKoinModule,
+                    useCasesKoinModule,
+                    repositoryKoinModule,
+                    databaseKoinModule,
+                    networkKoinModule
+                )
+            )
+        }
+
+    }
+
 }

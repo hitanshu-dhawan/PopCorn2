@@ -22,4 +22,5 @@
         android:name="com.hitanshudhawan.popcorn2.fragments.FavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" />
+
 </navigation>
