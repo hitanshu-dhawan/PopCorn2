@@ -4,7 +4,6 @@ import androidx.paging.PagedList
 import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.hitanshudhawan.popcorn2.*
-import com.hitanshudhawan.popcorn2.database.cache.CacheDatabase
 import com.hitanshudhawan.popcorn2.database.favorite.FavoriteDatabase
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
 import com.hitanshudhawan.popcorn2.network.GenresService
@@ -35,8 +34,8 @@ val useCasesKoinModule = module {
 
 val repositoryKoinModule = module {
 
-    single<MoviesRepository> { MoviesRepositoryImpl(get(), get(), get()) }
-    single<GenresRepository> { GenresRepositoryImpl(get(), get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
+    single<GenresRepository> { GenresRepositoryImpl(get()) }
 
 }
 
@@ -53,18 +52,6 @@ val databaseKoinModule = module {
 
     single { get<FavoriteDatabase>().favoriteMoviesDao() }
     single { get<FavoriteDatabase>().favoriteTVShowsDao() }
-
-    // Cache
-    single {
-        Room.databaseBuilder(
-            androidContext(),
-            CacheDatabase::class.java,
-            CacheDatabase::class.java.simpleName
-        ).build()
-    }
-
-    single { get<CacheDatabase>().moviesDao() }
-    single { get<CacheDatabase>().genresDao() }
 
 }
 

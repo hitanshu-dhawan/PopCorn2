@@ -161,14 +161,3 @@ suspend fun <T> safe(call: suspend () -> T): T? {
         null
     }
 }
-
-// hitanshu : write documentation
-suspend fun <T> resource(network: suspend () -> Resource<T>, database: suspend () -> Resource<T>, save: suspend (T) -> Unit): Resource<T> {
-    val resource = network()
-    if (resource is Resource.Success) {
-        save(resource.data)
-        return resource
-    } else {
-        return database()
-    }
-}
