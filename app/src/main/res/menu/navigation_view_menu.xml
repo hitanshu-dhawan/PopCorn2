@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group
-        android:id="@+id/group1"
-        android:checkableBehavior="single">
-        <item
-            android:id="@id/movies_destination"
-            android:icon="@mipmap/ic_movie_black_24dp"
-            android:title="@string/movies" />
-        <item
-            android:id="@id/tv_shows_destination"
-            android:icon="@mipmap/ic_tv_black_24dp"
-            android:title="@string/tv_shows" />
-    </group>
-
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="single">
-        <item
-            android:id="@id/favorites_destination"
-            android:icon="@mipmap/ic_favorite_black_24dp"
-            android:title="@string/favorites" />
-    </group>
-
+    <item
+        android:id="@id/movies_destination"
+        android:icon="@mipmap/ic_movie_black_24dp"
+        android:title="@string/movies" />
+    <item
+        android:id="@id/favorites_destination"
+        android:icon="@mipmap/ic_favorite_black_24dp"
+        android:title="@string/favorites" />
 </menu>

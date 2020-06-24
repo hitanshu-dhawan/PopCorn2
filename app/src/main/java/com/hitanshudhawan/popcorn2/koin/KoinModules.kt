@@ -1,19 +1,14 @@
 package com.hitanshudhawan.popcorn2.koin
 
-import androidx.paging.PagedList
-import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.hitanshudhawan.popcorn2.*
 import com.hitanshudhawan.popcorn2.network.ApiKeyInterceptor
 import com.hitanshudhawan.popcorn2.network.GenresService
 import com.hitanshudhawan.popcorn2.network.MoviesService
-import com.hitanshudhawan.popcorn2.network.TVShowsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
-import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -72,7 +67,6 @@ val networkKoinModule = module {
     }
 
     single { get<Retrofit>().create(MoviesService::class.java) }
-    single { get<Retrofit>().create(TVShowsService::class.java) }
     single { get<Retrofit>().create(GenresService::class.java) }
 
 }
