@@ -52,12 +52,9 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString { it.second }
-                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
-                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
-                                    })
                                 }
                                 onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
-                                    moviesViewModel.toggleFavoriteMovie(item)
+                                    //...
                                 }
                             }
                         }
@@ -80,12 +77,9 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
-                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
-                                    })
                                 }
                                 onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
-                                    moviesViewModel.toggleFavoriteMovie(item)
+                                    //...
                                 }
                             }
                         }
@@ -110,12 +104,9 @@ class MoviesFragment : Fragment() {
                                     title.text = item.title
                                     rating.text = "${item.rating}*"
                                     genres.text = item.genres.joinToString { it.second }
-                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
-                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
-                                    })
                                 }
                                 onChildViewClick(ShowBannerViewHolder::favorite) { index, view ->
-                                    moviesViewModel.toggleFavoriteMovie(item)
+                                    //...
                                 }
                             }
                         }
@@ -138,12 +129,9 @@ class MoviesFragment : Fragment() {
                                 onBind(::ShowCardViewHolder) { index, item ->
                                     poster.load("https://image.tmdb.org/t/p/w1280/${item.poster}")
                                     title.text = item.title
-                                    moviesViewModel.isFavoriteMovie(item.id).observe(this@MoviesFragment, Observer {
-                                        favorite.setImageResource(if (it != null && it) R.mipmap.ic_favorite_black_18dp else R.mipmap.ic_favorite_border_black_18dp)
-                                    })
                                 }
                                 onChildViewClick(ShowCardViewHolder::favorite) { index, view ->
-                                    moviesViewModel.toggleFavoriteMovie(item)
+                                    //...
                                 }
                             }
                         }

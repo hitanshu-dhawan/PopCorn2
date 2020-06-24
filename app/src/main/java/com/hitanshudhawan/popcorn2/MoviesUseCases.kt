@@ -12,8 +12,4 @@ interface MoviesUseCases {
 
     suspend fun getTopRatedMovies(): Resource<List<ShowData>>
 
-    fun isFavoriteMovie(id: Int): LiveData<Boolean>
-
-    suspend fun toggleFavoriteMovie(showData: ShowData)
-
 }

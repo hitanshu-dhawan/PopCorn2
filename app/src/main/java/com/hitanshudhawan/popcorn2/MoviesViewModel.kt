@@ -35,12 +35,4 @@ class MoviesViewModel(private val moviesUseCases: MoviesUseCases) : ViewModel() 
         return MoviesState.Loading
     }
 
-    fun isFavoriteMovie(id: Int) = moviesUseCases.isFavoriteMovie(id)
-
-    fun toggleFavoriteMovie(showData: ShowData) {
-        viewModelScope.launch {
-            moviesUseCases.toggleFavoriteMovie(showData)
-        }
-    }
-
 }

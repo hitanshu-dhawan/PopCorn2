@@ -12,8 +12,4 @@ interface MoviesRepository {
 
     suspend fun getTopRatedMovies(page: Int = 1): Resource<List<MovieBrief>>
 
-    fun isFavoriteMovie(id: Int): LiveData<Boolean>
-
-    suspend fun toggleFavoriteMovie(movieBrief: MovieBrief)
-
 }
